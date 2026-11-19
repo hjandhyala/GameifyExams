@@ -55,6 +55,7 @@ function evalCtx(track: TrackId, gameId: GameId) {
   return { ...(g.engine === 'jargon' ? { dictionary: dictionary(track) } : {}), ...(g.workup ? { vocab: vocabMap(g.workup.vocabId) } : {}) };
 }
 
+const META_PATTERNS = [/\bexcerpts?\b/i, /\bgrounding\b/i, /\bnote to (the )?(reviewer|editor)s?\b/i, /\bas an ai\b/i, /\bthis (item|question) (was|is) (generated|written)\b/i, /\btodo\b/i];
 const FAIRNESS_PATTERNS = [/\b(african[- ]american|caucasian|hispanic|asian|black|white) (man|woman|boy|girl|patient|male|female)\b/i, /\b(illegal alien|crazy|retarded|addict)\b/i];
 
 // ------------------------------------------------------------------ validators
@@ -95,9 +96,12 @@ export async function validateItem(repo: Repo, item: ItemRow, opts: { llm: boole
     details: `max similarity ${worst.j.toFixed(2)}${worst.id ? ` (${worst.id})` : ''}${answerClash ? `; answer reused by ${answerClash.id} within 365 days` : ''}`,
   });
 
-  // V8 style
+  // V8 style: meta/authoring leakage into learner-facing text is a hard failure.
+  const learnerText = itemText(a);
+  const meta = META_PATTERNS.find((re) => re.test(learnerText));
   const prose = [a.stem, a.explanation, a.passage].filter((x): x is string => typeof x === 'string').join(' ');
-  if (prose) {
+  if (meta) checks.push({ id: 'V8', status: 'fail', details: `authoring/meta text in learner-facing content (${meta.source})` });
+  else if (prose) {
     const fk = fleschKincaid(prose);
     const max = track === 'lsat' ? 15 : 16;
     checks.push({ id: 'V8', status: fk > max + 2 ? 'warn' : 'pass', details: `Flesch-Kincaid grade ${fk.toFixed(1)} (target ≤ ${max})` });
@@ -177,7 +181,7 @@ export async function validateItem(repo: Repo, item: ItemRow, opts: { llm: boole
 function finalize(r: ValidationReport): ValidationReport {
   const weights: Record<Check['status'], number> = { pass: 1, warn: 0.6, fail: 0 };
   r.score = Math.round((r.checks.reduce((a, c) => a + weights[c.status], 0) / Math.max(1, r.checks.length)) * 100);
-  const mustPass = ['V1', 'V2', 'V6'];
+  const mustPass = ['V1', 'V2', 'V6', 'V8'];
   r.passed = r.checks.every((c) => !(mustPass.includes(c.id) && c.status === 'fail')) && !r.checks.some((c) => ['V3', 'V4', 'V5'].includes(c.id) && c.status === 'fail');
   return r;
 }
