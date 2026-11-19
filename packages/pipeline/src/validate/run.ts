@@ -300,7 +300,22 @@ export function autoApprovable(r: ValidationReport): boolean {
   return r.passed && r.checks.every((c) => c.status === 'pass' || (c.id === 'V5' && c.status === 'warn' && !c.details.startsWith('no grounding'))) && byId.get('V3') === 'pass' && byId.get('V4') === 'pass';
 }
 
-export async function validateDrafts(repo: Repo, opts: { runId?: string; llm: boolean; log: Log; limit?: number; autoApprove?: boolean }) {
+export type AutoApproveMode = 'off' | 'strict' | 'launch';
+
+/**
+ * 'strict': only items where every check passed outright.
+ * 'launch': any item with no failing check (warnings allowed). Time-boxed via AUTO_APPROVE_LAUNCH_UNTIL;
+ * after that date it falls back to 'strict'. Failing items (solver disagreement, ambiguity, contradicted facts)
+ * are never auto-approved.
+ */
+export function resolveAutoApprove(flag: string | boolean | undefined, today = new Date().toISOString().slice(0, 10)): AutoApproveMode {
+  const until = process.env.AUTO_APPROVE_LAUNCH_UNTIL;
+  const requested = flag === 'launch' || (flag === undefined && until) ? 'launch' : flag || process.env.AUTO_APPROVE_VALIDATED === '1' ? 'strict' : 'off';
+  if (requested === 'launch' && (!until || today > until)) return 'strict';
+  return requested;
+}
+
+export async function validateDrafts(repo: Repo, opts: { runId?: string; llm: boolean; log: Log; limit?: number; autoApprove?: AutoApproveMode }) {
   const drafts = (await repo.listItems({ status: ['draft'], limit: opts.limit ?? 500 })).filter((i) => !opts.runId || (i.provenance as { runId?: string }).runId === opts.runId);
   let passed = 0;
   let approved = 0;
@@ -309,11 +324,12 @@ export async function validateDrafts(repo: Repo, opts: { runId?: string; llm: bo
     const r = await validateItem(repo, it, opts);
     cost += r.costUsd;
     if (r.passed) passed++;
-    const auto = !!opts.autoApprove && opts.llm && autoApprovable(r);
+    const mode = opts.autoApprove ?? 'off';
+    const auto = opts.llm && ((mode === 'strict' && autoApprovable(r)) || (mode === 'launch' && r.passed));
     const status = auto ? 'approved' : r.passed ? 'in_review' : 'auto_rejected';
     await repo.updateItem(
       it.id,
-      { validation: r, status, ...(auto ? { provenance: { ...(it.provenance as object), provisional: true, autoApprovedAt: new Date().toISOString() } } : {}) },
+      { validation: r, status, ...(auto ? { provenance: { ...(it.provenance as object), provisional: true, autoApproveMode: mode, autoApprovedAt: new Date().toISOString() } } : {}) },
       'validator',
       auto ? 'validate:auto_approve' : r.passed ? 'validate:pass' : 'validate:fail',
     );
