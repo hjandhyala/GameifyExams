@@ -33,7 +33,10 @@ export async function createDb(opts: { url?: string; pgliteDir?: string } = {}):
       db,
       kind: 'postgres',
       exec: async (script) => {
-        await client.unsafe(script);
+        // postgres.js requires transactions to go through sql.begin (pooled connections).
+        const m = /^\s*BEGIN;([\s\S]*)COMMIT;\s*$/.exec(script);
+        if (m) await client.begin(async (tx) => tx.unsafe(m[1]!));
+        else await client.unsafe(script);
       },
       close: async () => {
         await client.end();

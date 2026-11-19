@@ -27,7 +27,7 @@
     }
   ],
   "regions": [
-    "iad1"
+    "cle1"
   ],
   "functions": {
     "src/app/api/**/*.ts": {
