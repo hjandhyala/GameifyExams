@@ -1,0 +1,13 @@
+# Optional local services (the app also runs with embedded PGlite and in-memory rate limits).
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: prepdle
+      POSTGRES_PASSWORD: prepdle
+      POSTGRES_DB: prepdle
+    ports: ['5432:5432']
+    volumes: ['pgdata:/var/lib/postgresql/data']
+volumes:
+  pgdata: {}
+# Then: DATABASE_URL=postgres://prepdle:prepdle@localhost:5432/prepdle npm run db:migrate && npm run db:seed

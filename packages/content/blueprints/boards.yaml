@@ -1,0 +1,25 @@
+track: boards
+version: 1
+reconciledWith: "USMLE Step 1 / Step 2 CK content outlines — editorial targets; reconcile with official PDFs (task C-1)"
+nodes:
+  BOARDS.GEN: { name: "General principles", weight: 0.12, children: {
+      BOARDS.GEN.BIOCHEM: { name: Biochemistry, weight: 0.2 }, BOARDS.GEN.BIOCHEM.GSD: { name: "Glycogen storage diseases", weight: 0.05 },
+      BOARDS.GEN.MICRO: { name: Microbiology, weight: 0.25 }, BOARDS.GEN.IMMUNO: { name: Immunology, weight: 0.2 },
+      BOARDS.GEN.PHARM: { name: Pharmacology, weight: 0.2 }, BOARDS.GEN.GENETICS: { name: Genetics, weight: 0.1 } } }
+  BOARDS.HEME: { name: "Blood & lymphoreticular", weight: 0.09, children: {
+      BOARDS.HEME.ANEMIA: { name: Anemias, weight: 0.35 }, BOARDS.HEME.HEMOLYTIC: { name: "Hemolytic disorders", weight: 0.2 },
+      BOARDS.HEME.COAG: { name: "Coagulation & anticoagulants", weight: 0.25 }, BOARDS.HEME.ONC: { name: "Hematologic malignancy", weight: 0.2 } } }
+  BOARDS.NEURO: { name: "Nervous system & behavioral health", weight: 0.12, children: {
+      BOARDS.NEURO.NMJ: { name: "Neuromuscular junction", weight: 0.2 }, BOARDS.NEURO.STROKE: { name: Cerebrovascular, weight: 0.3 },
+      BOARDS.PSYCH.PHARM: { name: Psychopharmacology, weight: 0.25 }, BOARDS.NEURO.DEGEN: { name: Neurodegeneration, weight: 0.25 } } }
+  BOARDS.MSK: { name: "Musculoskeletal & skin", weight: 0.08 }
+  BOARDS.CV: { name: Cardiovascular, weight: 0.09, children: { BOARDS.CV.ISCHEMIA: { name: "Ischemic heart disease", weight: 0.4 }, BOARDS.CV.HF: { name: "Heart failure", weight: 0.3 }, BOARDS.CV.VALVE: { name: "Valvular disease", weight: 0.3 } } }
+  BOARDS.RESP: { name: Respiratory, weight: 0.07, children: { BOARDS.RESP.ILD: { name: "Interstitial lung disease", weight: 0.3 }, BOARDS.RESP.OBSTRUCTIVE: { name: "Obstructive disease", weight: 0.4 }, BOARDS.RESP.PEDS: { name: "Pediatric airway", weight: 0.3 } } }
+  BOARDS.RENAL: { name: "Renal & urinary", weight: 0.06, children: { BOARDS.RENAL.GN: { name: "Glomerular disease", weight: 0.4 }, BOARDS.RENAL.ACIDBASE: { name: "Acid–base & electrolytes", weight: 0.6 } } }
+  BOARDS.GI: { name: Gastrointestinal, weight: 0.08, children: { BOARDS.GI.LIVER: { name: "Liver & biliary", weight: 0.5 }, BOARDS.GI.LUMINAL: { name: "Luminal GI", weight: 0.5 } } }
+  BOARDS.ENDO: { name: "Endocrine & reproductive", weight: 0.12, children: {
+      BOARDS.ENDO.DIABETES: { name: Diabetes, weight: 0.35 }, BOARDS.ENDO.THYROID: { name: Thyroid, weight: 0.25 },
+      BOARDS.ENDO.PARATHYROID: { name: "Calcium & parathyroid", weight: 0.2 }, BOARDS.ENDO.ADRENAL: { name: Adrenal, weight: 0.2 } } }
+  BOARDS.MULTI: { name: "Multisystem processes", weight: 0.07, children: { BOARDS.MULTI.SHOCK: { name: "Sepsis & shock", weight: 0.4 }, BOARDS.MULTI.AUTOIMMUNE: { name: "Autoimmune disease", weight: 0.4 }, BOARDS.MULTI.GRANULOMATOUS: { name: "Granulomatous disease", weight: 0.2 } } }
+  BOARDS.BIOSTAT: { name: "Biostatistics & epidemiology", weight: 0.05, children: { BOARDS.BIOSTAT.TESTS: { name: "Diagnostic tests", weight: 0.5 }, BOARDS.BIOSTAT.STUDIES: { name: "Study design", weight: 0.5 } } }
+  BOARDS.ETHICS: { name: "Communication & ethics", weight: 0.05 }

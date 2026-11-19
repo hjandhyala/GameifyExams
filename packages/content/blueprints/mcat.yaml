@@ -1,0 +1,54 @@
+track: mcat
+version: 1
+reconciledWith: "AAMC What's on the MCAT Exam (content outline) — editorial weights; verify before production (task C-1)"
+nodes:
+  MCAT.CP:
+    name: Chemical & Physical Foundations
+    weight: 0.27
+    children:
+      MCAT.CP.4A: { name: "Translational motion, forces, work, energy, equilibrium", weight: 0.12 }
+      MCAT.CP.4B: { name: "Fluids and gas movement", weight: 0.10 }
+      MCAT.CP.4C: { name: "Electrochemistry and circuits", weight: 0.10 }
+      MCAT.CP.4D: { name: "Light and sound", weight: 0.10 }
+      MCAT.CP.4E: { name: "Atoms, nuclear decay, electronic structure", weight: 0.10 }
+      MCAT.CP.5A: { name: "Water and solutions (acids, bases, buffers)", weight: 0.12 }
+      MCAT.CP.5B: { name: "Molecular structure, isomers, intermolecular forces", weight: 0.12 }
+      MCAT.CP.5C: { name: "Separation and purification", weight: 0.08 }
+      MCAT.CP.5D: { name: "Biomolecule structure and reactivity", weight: 0.08 }
+      MCAT.CP.5E: { name: "Thermodynamics and kinetics", weight: 0.08 }
+  MCAT.BB:
+    name: Biological & Biochemical Foundations
+    weight: 0.27
+    children:
+      MCAT.BB.1A: { name: "Proteins and amino acids", weight: 0.14 }
+      MCAT.BB.1B: { name: "Transmission of genetic information", weight: 0.14 }
+      MCAT.BB.1C: { name: "Heritable information", weight: 0.10 }
+      MCAT.BB.1D: { name: "Bioenergetics and metabolism", weight: 0.16 }
+      MCAT.BB.2A: { name: "Cells", weight: 0.10 }
+      MCAT.BB.2B: { name: "Prokaryotes and viruses", weight: 0.08 }
+      MCAT.BB.2C: { name: "Cell division and differentiation", weight: 0.08 }
+      MCAT.BB.3A: { name: "Nervous and endocrine systems", weight: 0.12 }
+      MCAT.BB.3B: { name: "Other organ systems", weight: 0.08 }
+  MCAT.PS:
+    name: Psychological, Social & Biological Foundations of Behavior
+    weight: 0.26
+    children:
+      MCAT.PS.6A: { name: "Sensing the environment", weight: 0.10 }
+      MCAT.PS.6B: { name: "Making sense of the environment", weight: 0.10 }
+      MCAT.PS.6C: { name: "Responding to the world", weight: 0.08 }
+      MCAT.PS.7A: { name: "Individual influences on behavior", weight: 0.10 }
+      MCAT.PS.7B: { name: "Social processes", weight: 0.10 }
+      MCAT.PS.7C: { name: "Attitude and behavior change", weight: 0.10 }
+      MCAT.PS.8A: { name: "Self-identity", weight: 0.08 }
+      MCAT.PS.8B: { name: "Social thinking", weight: 0.08 }
+      MCAT.PS.8C: { name: "Social interactions", weight: 0.08 }
+      MCAT.PS.9A: { name: "Social structure", weight: 0.06 }
+      MCAT.PS.9B: { name: "Demographics", weight: 0.06 }
+      MCAT.PS.10A: { name: "Social inequality", weight: 0.06 }
+  MCAT.CARS:
+    name: Critical Analysis & Reasoning Skills
+    weight: 0.20
+    children:
+      MCAT.CARS.COMP: { name: "Foundations of comprehension", weight: 0.30 }
+      MCAT.CARS.WITHIN: { name: "Reasoning within the text", weight: 0.30 }
+      MCAT.CARS.BEYOND: { name: "Reasoning beyond the text", weight: 0.40 }

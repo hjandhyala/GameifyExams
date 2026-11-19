@@ -1,0 +1,1516 @@
+{
+ "id": "mcat-entities",
+ "track": "mcat",
+ "attributes": [
+  {
+   "key": "section",
+   "label": "Section"
+  },
+  {
+   "key": "discipline",
+   "label": "Discipline"
+  },
+  {
+   "key": "type",
+   "label": "Type"
+  }
+ ],
+ "entries": [
+  {
+   "id": "mc_glucagon",
+   "name": "Glucagon",
+   "syn": [],
+   "abbr": [],
+   "attrs": {
+    "section": "BB",
+    "discipline": "Biology",
+    "type": "Hormone"
+   },
+   "commonness": 80
+  },
+  {
+   "id": "mc_insulin",
+   "name": "Insulin",
+   "syn": [],
+   "abbr": [],
+   "attrs": {
+    "section": "BB",
+    "discipline": "Biology",
+    "type": "Hormone"
+   },
+   "commonness": 90
+  },
+  {
+   "id": "mc_cortisol",
+   "name": "Cortisol",
+   "syn": [
+    "Hydrocortisone"
+   ],
+   "abbr": [],
+   "attrs": {
+    "section": "BB",
+    "discipline": "Biology",
+    "type": "Hormone"
+   },
+   "commonness": 80
+  },
+  {
+   "id": "mc_aldosterone",
+   "name": "Aldosterone",
+   "syn": [],
+   "abbr": [],
+   "attrs": {
+    "section": "BB",
+    "discipline": "Biology",
+    "type": "Hormone"
+   },
+   "commonness": 75
+  },
+  {
+   "id": "mc_antidiuretic_hormone",
+   "name": "Antidiuretic hormone",
+   "syn": [
+    "Vasopressin"
+   ],
+   "abbr": [
+    "ADH"
+   ],
+   "attrs": {
+    "section": "BB",
+    "discipline": "Biology",
+    "type": "Hormone"
+   },
+   "commonness": 80
+  },
+  {
+   "id": "mc_oxytocin",
+   "name": "Oxytocin",
+   "syn": [],
+   "abbr": [],
+   "attrs": {
+    "section": "BB",
+    "discipline": "Biology",
+    "type": "Hormone"
+   },
+   "commonness": 70
+  },
+  {
+   "id": "mc_epinephrine",
+   "name": "Epinephrine",
+   "syn": [
+    "Adrenaline"
+   ],
+   "abbr": [],
+   "attrs": {
+    "section": "BB",
+    "discipline": "Biology",
+    "type": "Hormone"
+   },
+   "commonness": 80
+  },
+  {
+   "id": "mc_thyroxine",
+   "name": "Thyroxine",
+   "syn": [
+    "Thyroid hormone"
+   ],
+   "abbr": [
+    "T4"
+   ],
+   "attrs": {
+    "section": "BB",
+    "discipline": "Biology",
+    "type": "Hormone"
+   },
+   "commonness": 70
+  },
+  {
+   "id": "mc_parathyroid_hormone",
+   "name": "Parathyroid hormone",
+   "syn": [],
+   "abbr": [
+    "PTH"
+   ],
+   "attrs": {
+    "section": "BB",
+    "discipline": "Biology",
+    "type": "Hormone"
+   },
+   "commonness": 75
+  },
+  {
+   "id": "mc_calcitonin",
+   "name": "Calcitonin",
+   "syn": [],
+   "abbr": [],
+   "attrs": {
+    "section": "BB",
+    "discipline": "Biology",
+    "type": "Hormone"
+   },
+   "commonness": 65
+  },
+  {
+   "id": "mc_growth_hormone",
+   "name": "Growth hormone",
+   "syn": [
+    "Somatotropin"
+   ],
+   "abbr": [
+    "GH"
+   ],
+   "attrs": {
+    "section": "BB",
+    "discipline": "Biology",
+    "type": "Hormone"
+   },
+   "commonness": 65
+  },
+  {
+   "id": "mc_prolactin",
+   "name": "Prolactin",
+   "syn": [],
+   "abbr": [],
+   "attrs": {
+    "section": "BB",
+    "discipline": "Biology",
+    "type": "Hormone"
+   },
+   "commonness": 55
+  },
+  {
+   "id": "mc_follicle_stimulating_hormone",
+   "name": "Follicle-stimulating hormone",
+   "syn": [],
+   "abbr": [
+    "FSH"
+   ],
+   "attrs": {
+    "section": "BB",
+    "discipline": "Biology",
+    "type": "Hormone"
+   },
+   "commonness": 65
+  },
+  {
+   "id": "mc_luteinizing_hormone",
+   "name": "Luteinizing hormone",
+   "syn": [],
+   "abbr": [
+    "LH"
+   ],
+   "attrs": {
+    "section": "BB",
+    "discipline": "Biology",
+    "type": "Hormone"
+   },
+   "commonness": 65
+  },
+  {
+   "id": "mc_adrenocorticotropic_hormone",
+   "name": "Adrenocorticotropic hormone",
+   "syn": [
+    "Corticotropin"
+   ],
+   "abbr": [
+    "ACTH"
+   ],
+   "attrs": {
+    "section": "BB",
+    "discipline": "Biology",
+    "type": "Hormone"
+   },
+   "commonness": 65
+  },
+  {
+   "id": "mc_thyroid_stimulating_hormone",
+   "name": "Thyroid-stimulating hormone",
+   "syn": [
+    "Thyrotropin"
+   ],
+   "abbr": [
+    "TSH"
+   ],
+   "attrs": {
+    "section": "BB",
+    "discipline": "Biology",
+    "type": "Hormone"
+   },
+   "commonness": 65
+  },
+  {
+   "id": "mc_estrogen",
+   "name": "Estrogen",
+   "syn": [
+    "Estradiol"
+   ],
+   "abbr": [],
+   "attrs": {
+    "section": "BB",
+    "discipline": "Biology",
+    "type": "Hormone"
+   },
+   "commonness": 65
+  },
+  {
+   "id": "mc_progesterone",
+   "name": "Progesterone",
+   "syn": [],
+   "abbr": [],
+   "attrs": {
+    "section": "BB",
+    "discipline": "Biology",
+    "type": "Hormone"
+   },
+   "commonness": 65
+  },
+  {
+   "id": "mc_testosterone",
+   "name": "Testosterone",
+   "syn": [],
+   "abbr": [],
+   "attrs": {
+    "section": "BB",
+    "discipline": "Biology",
+    "type": "Hormone"
+   },
+   "commonness": 65
+  },
+  {
+   "id": "mc_hexokinase",
+   "name": "Hexokinase",
+   "syn": [],
+   "abbr": [],
+   "attrs": {
+    "section": "BB",
+    "discipline": "Biochemistry",
+    "type": "Enzyme"
+   },
+   "commonness": 70
+  },
+  {
+   "id": "mc_phosphofructokinase_1",
+   "name": "Phosphofructokinase-1",
+   "syn": [
+    "PFK-1",
+    "Phosphofructokinase"
+   ],
+   "abbr": [
+    "PFK1"
+   ],
+   "attrs": {
+    "section": "BB",
+    "discipline": "Biochemistry",
+    "type": "Enzyme"
+   },
+   "commonness": 80
+  },
+  {
+   "id": "mc_pyruvate_kinase",
+   "name": "Pyruvate kinase",
+   "syn": [],
+   "abbr": [],
+   "attrs": {
+    "section": "BB",
+    "discipline": "Biochemistry",
+    "type": "Enzyme"
+   },
+   "commonness": 65
+  },
+  {
+   "id": "mc_pyruvate_dehydrogenase_complex",
+   "name": "Pyruvate dehydrogenase complex",
+   "syn": [
+    "Pyruvate dehydrogenase"
+   ],
+   "abbr": [
+    "PDH"
+   ],
+   "attrs": {
+    "section": "BB",
+    "discipline": "Biochemistry",
+    "type": "Enzyme"
+   },
+   "commonness": 70
+  },
+  {
+   "id": "mc_citrate_synthase",
+   "name": "Citrate synthase",
+   "syn": [],
+   "abbr": [],
+   "attrs": {
+    "section": "BB",
+    "discipline": "Biochemistry",
+    "type": "Enzyme"
+   },
+   "commonness": 55
+  },
+  {
+   "id": "mc_isocitrate_dehydrogenase",
+   "name": "Isocitrate dehydrogenase",
+   "syn": [],
+   "abbr": [],
+   "attrs": {
+    "section": "BB",
+    "discipline": "Biochemistry",
+    "type": "Enzyme"
+   },
+   "commonness": 60
+  },
+  {
+   "id": "mc_atp_synthase",
+   "name": "ATP synthase",
+   "syn": [
+    "Complex V"
+   ],
+   "abbr": [],
+   "attrs": {
+    "section": "BB",
+    "discipline": "Biochemistry",
+    "type": "Enzyme"
+   },
+   "commonness": 80
+  },
+  {
+   "id": "mc_glycogen_phosphorylase",
+   "name": "Glycogen phosphorylase",
+   "syn": [],
+   "abbr": [],
+   "attrs": {
+    "section": "BB",
+    "discipline": "Biochemistry",
+    "type": "Enzyme"
+   },
+   "commonness": 60
+  },
+  {
+   "id": "mc_fructose_1_6_bisphosphatase",
+   "name": "Fructose-1,6-bisphosphatase",
+   "syn": [],
+   "abbr": [],
+   "attrs": {
+    "section": "BB",
+    "discipline": "Biochemistry",
+    "type": "Enzyme"
+   },
+   "commonness": 55
+  },
+  {
+   "id": "mc_dna_polymerase_iii",
+   "name": "DNA polymerase III",
+   "syn": [
+    "DNA polymerase"
+   ],
+   "abbr": [],
+   "attrs": {
+    "section": "BB",
+    "discipline": "Biology",
+    "type": "Enzyme"
+   },
+   "commonness": 70
+  },
+  {
+   "id": "mc_rna_polymerase_ii",
+   "name": "RNA polymerase II",
+   "syn": [
+    "RNA polymerase"
+   ],
+   "abbr": [],
+   "attrs": {
+    "section": "BB",
+    "discipline": "Biology",
+    "type": "Enzyme"
+   },
+   "commonness": 70
+  },
+  {
+   "id": "mc_helicase",
+   "name": "Helicase",
+   "syn": [],
+   "abbr": [],
+   "attrs": {
+    "section": "BB",
+    "discipline": "Biology",
+    "type": "Enzyme"
+   },
+   "commonness": 65
+  },
+  {
+   "id": "mc_dna_ligase",
+   "name": "DNA ligase",
+   "syn": [
+    "Ligase"
+   ],
+   "abbr": [],
+   "attrs": {
+    "section": "BB",
+    "discipline": "Biology",
+    "type": "Enzyme"
+   },
+   "commonness": 60
+  },
+  {
+   "id": "mc_primase",
+   "name": "Primase",
+   "syn": [],
+   "abbr": [],
+   "attrs": {
+    "section": "BB",
+    "discipline": "Biology",
+    "type": "Enzyme"
+   },
+   "commonness": 55
+  },
+  {
+   "id": "mc_topoisomerase",
+   "name": "Topoisomerase",
+   "syn": [
+    "DNA gyrase"
+   ],
+   "abbr": [],
+   "attrs": {
+    "section": "BB",
+    "discipline": "Biology",
+    "type": "Enzyme"
+   },
+   "commonness": 55
+  },
+  {
+   "id": "mc_telomerase",
+   "name": "Telomerase",
+   "syn": [],
+   "abbr": [],
+   "attrs": {
+    "section": "BB",
+    "discipline": "Biology",
+    "type": "Enzyme"
+   },
+   "commonness": 55
+  },
+  {
+   "id": "mc_pepsin",
+   "name": "Pepsin",
+   "syn": [],
+   "abbr": [],
+   "attrs": {
+    "section": "BB",
+    "discipline": "Biology",
+    "type": "Enzyme"
+   },
+   "commonness": 60
+  },
+  {
+   "id": "mc_trypsin",
+   "name": "Trypsin",
+   "syn": [],
+   "abbr": [],
+   "attrs": {
+    "section": "BB",
+    "discipline": "Biology",
+    "type": "Enzyme"
+   },
+   "commonness": 60
+  },
+  {
+   "id": "mc_pancreatic_lipase",
+   "name": "Pancreatic lipase",
+   "syn": [
+    "Lipase"
+   ],
+   "abbr": [],
+   "attrs": {
+    "section": "BB",
+    "discipline": "Biology",
+    "type": "Enzyme"
+   },
+   "commonness": 55
+  },
+  {
+   "id": "mc_carbonic_anhydrase",
+   "name": "Carbonic anhydrase",
+   "syn": [],
+   "abbr": [],
+   "attrs": {
+    "section": "CP",
+    "discipline": "Biochemistry",
+    "type": "Enzyme"
+   },
+   "commonness": 60
+  },
+  {
+   "id": "mc_mitochondrion",
+   "name": "Mitochondrion",
+   "syn": [
+    "Mitochondria"
+   ],
+   "abbr": [],
+   "attrs": {
+    "section": "BB",
+    "discipline": "Biology",
+    "type": "Organelle"
+   },
+   "commonness": 85
+  },
+  {
+   "id": "mc_ribosome",
+   "name": "Ribosome",
+   "syn": [],
+   "abbr": [],
+   "attrs": {
+    "section": "BB",
+    "discipline": "Biology",
+    "type": "Organelle"
+   },
+   "commonness": 80
+  },
+  {
+   "id": "mc_rough_endoplasmic_reticulum",
+   "name": "Rough endoplasmic reticulum",
+   "syn": [
+    "Rough ER"
+   ],
+   "abbr": [
+    "RER"
+   ],
+   "attrs": {
+    "section": "BB",
+    "discipline": "Biology",
+    "type": "Organelle"
+   },
+   "commonness": 70
+  },
+  {
+   "id": "mc_smooth_endoplasmic_reticulum",
+   "name": "Smooth endoplasmic reticulum",
+   "syn": [
+    "Smooth ER"
+   ],
+   "abbr": [
+    "SER"
+   ],
+   "attrs": {
+    "section": "BB",
+    "discipline": "Biology",
+    "type": "Organelle"
+   },
+   "commonness": 65
+  },
+  {
+   "id": "mc_golgi_apparatus",
+   "name": "Golgi apparatus",
+   "syn": [
+    "Golgi body"
+   ],
+   "abbr": [],
+   "attrs": {
+    "section": "BB",
+    "discipline": "Biology",
+    "type": "Organelle"
+   },
+   "commonness": 70
+  },
+  {
+   "id": "mc_lysosome",
+   "name": "Lysosome",
+   "syn": [],
+   "abbr": [],
+   "attrs": {
+    "section": "BB",
+    "discipline": "Biology",
+    "type": "Organelle"
+   },
+   "commonness": 70
+  },
+  {
+   "id": "mc_peroxisome",
+   "name": "Peroxisome",
+   "syn": [],
+   "abbr": [],
+   "attrs": {
+    "section": "BB",
+    "discipline": "Biology",
+    "type": "Organelle"
+   },
+   "commonness": 60
+  },
+  {
+   "id": "mc_nucleolus",
+   "name": "Nucleolus",
+   "syn": [],
+   "abbr": [],
+   "attrs": {
+    "section": "BB",
+    "discipline": "Biology",
+    "type": "Organelle"
+   },
+   "commonness": 55
+  },
+  {
+   "id": "mc_dopamine",
+   "name": "Dopamine",
+   "syn": [],
+   "abbr": [],
+   "attrs": {
+    "section": "PS",
+    "discipline": "Psychology",
+    "type": "Neurotransmitter"
+   },
+   "commonness": 80
+  },
+  {
+   "id": "mc_serotonin",
+   "name": "Serotonin",
+   "syn": [
+    "5-hydroxytryptamine"
+   ],
+   "abbr": [
+    "5-HT"
+   ],
+   "attrs": {
+    "section": "PS",
+    "discipline": "Psychology",
+    "type": "Neurotransmitter"
+   },
+   "commonness": 80
+  },
+  {
+   "id": "mc_acetylcholine",
+   "name": "Acetylcholine",
+   "syn": [],
+   "abbr": [
+    "ACh"
+   ],
+   "attrs": {
+    "section": "BB",
+    "discipline": "Biology",
+    "type": "Neurotransmitter"
+   },
+   "commonness": 80
+  },
+  {
+   "id": "mc_gaba",
+   "name": "GABA",
+   "syn": [
+    "Gamma-aminobutyric acid"
+   ],
+   "abbr": [],
+   "attrs": {
+    "section": "PS",
+    "discipline": "Psychology",
+    "type": "Neurotransmitter"
+   },
+   "commonness": 75
+  },
+  {
+   "id": "mc_glutamate",
+   "name": "Glutamate",
+   "syn": [],
+   "abbr": [],
+   "attrs": {
+    "section": "PS",
+    "discipline": "Psychology",
+    "type": "Neurotransmitter"
+   },
+   "commonness": 70
+  },
+  {
+   "id": "mc_norepinephrine",
+   "name": "Norepinephrine",
+   "syn": [
+    "Noradrenaline"
+   ],
+   "abbr": [],
+   "attrs": {
+    "section": "PS",
+    "discipline": "Psychology",
+    "type": "Neurotransmitter"
+   },
+   "commonness": 70
+  },
+  {
+   "id": "mc_hippocampus",
+   "name": "Hippocampus",
+   "syn": [],
+   "abbr": [],
+   "attrs": {
+    "section": "PS",
+    "discipline": "Psychology",
+    "type": "Brain region"
+   },
+   "commonness": 80
+  },
+  {
+   "id": "mc_amygdala",
+   "name": "Amygdala",
+   "syn": [],
+   "abbr": [],
+   "attrs": {
+    "section": "PS",
+    "discipline": "Psychology",
+    "type": "Brain region"
+   },
+   "commonness": 80
+  },
+  {
+   "id": "mc_cerebellum",
+   "name": "Cerebellum",
+   "syn": [],
+   "abbr": [],
+   "attrs": {
+    "section": "PS",
+    "discipline": "Psychology",
+    "type": "Brain region"
+   },
+   "commonness": 70
+  },
+  {
+   "id": "mc_hypothalamus",
+   "name": "Hypothalamus",
+   "syn": [],
+   "abbr": [],
+   "attrs": {
+    "section": "PS",
+    "discipline": "Psychology",
+    "type": "Brain region"
+   },
+   "commonness": 80
+  },
+  {
+   "id": "mc_thalamus",
+   "name": "Thalamus",
+   "syn": [],
+   "abbr": [],
+   "attrs": {
+    "section": "PS",
+    "discipline": "Psychology",
+    "type": "Brain region"
+   },
+   "commonness": 70
+  },
+  {
+   "id": "mc_broca_s_area",
+   "name": "Broca's area",
+   "syn": [
+    "Broca area"
+   ],
+   "abbr": [],
+   "attrs": {
+    "section": "PS",
+    "discipline": "Psychology",
+    "type": "Brain region"
+   },
+   "commonness": 70
+  },
+  {
+   "id": "mc_wernicke_s_area",
+   "name": "Wernicke's area",
+   "syn": [
+    "Wernicke area"
+   ],
+   "abbr": [],
+   "attrs": {
+    "section": "PS",
+    "discipline": "Psychology",
+    "type": "Brain region"
+   },
+   "commonness": 70
+  },
+  {
+   "id": "mc_prefrontal_cortex",
+   "name": "Prefrontal cortex",
+   "syn": [],
+   "abbr": [
+    "PFC"
+   ],
+   "attrs": {
+    "section": "PS",
+    "discipline": "Psychology",
+    "type": "Brain region"
+   },
+   "commonness": 70
+  },
+  {
+   "id": "mc_classical_conditioning",
+   "name": "Classical conditioning",
+   "syn": [
+    "Pavlovian conditioning"
+   ],
+   "abbr": [],
+   "attrs": {
+    "section": "PS",
+    "discipline": "Psychology",
+    "type": "Theory"
+   },
+   "commonness": 85
+  },
+  {
+   "id": "mc_operant_conditioning",
+   "name": "Operant conditioning",
+   "syn": [
+    "Instrumental conditioning"
+   ],
+   "abbr": [],
+   "attrs": {
+    "section": "PS",
+    "discipline": "Psychology",
+    "type": "Theory"
+   },
+   "commonness": 85
+  },
+  {
+   "id": "mc_cognitive_dissonance",
+   "name": "Cognitive dissonance",
+   "syn": [],
+   "abbr": [],
+   "attrs": {
+    "section": "PS",
+    "discipline": "Psychology",
+    "type": "Theory"
+   },
+   "commonness": 80
+  },
+  {
+   "id": "mc_fundamental_attribution_error",
+   "name": "Fundamental attribution error",
+   "syn": [
+    "Correspondence bias"
+   ],
+   "abbr": [],
+   "attrs": {
+    "section": "PS",
+    "discipline": "Psychology",
+    "type": "Theory"
+   },
+   "commonness": 75
+  },
+  {
+   "id": "mc_self_serving_bias",
+   "name": "Self-serving bias",
+   "syn": [],
+   "abbr": [],
+   "attrs": {
+    "section": "PS",
+    "discipline": "Psychology",
+    "type": "Theory"
+   },
+   "commonness": 65
+  },
+  {
+   "id": "mc_bystander_effect",
+   "name": "Bystander effect",
+   "syn": [],
+   "abbr": [],
+   "attrs": {
+    "section": "PS",
+    "discipline": "Psychology",
+    "type": "Theory"
+   },
+   "commonness": 70
+  },
+  {
+   "id": "mc_social_facilitation",
+   "name": "Social facilitation",
+   "syn": [],
+   "abbr": [],
+   "attrs": {
+    "section": "PS",
+    "discipline": "Psychology",
+    "type": "Theory"
+   },
+   "commonness": 65
+  },
+  {
+   "id": "mc_groupthink",
+   "name": "Groupthink",
+   "syn": [],
+   "abbr": [],
+   "attrs": {
+    "section": "PS",
+    "discipline": "Psychology",
+    "type": "Theory"
+   },
+   "commonness": 65
+  },
+  {
+   "id": "mc_deindividuation",
+   "name": "Deindividuation",
+   "syn": [],
+   "abbr": [],
+   "attrs": {
+    "section": "PS",
+    "discipline": "Psychology",
+    "type": "Theory"
+   },
+   "commonness": 55
+  },
+  {
+   "id": "mc_james_lange_theory",
+   "name": "James-Lange theory",
+   "syn": [],
+   "abbr": [],
+   "attrs": {
+    "section": "PS",
+    "discipline": "Psychology",
+    "type": "Theory"
+   },
+   "commonness": 65
+  },
+  {
+   "id": "mc_cannon_bard_theory",
+   "name": "Cannon-Bard theory",
+   "syn": [],
+   "abbr": [],
+   "attrs": {
+    "section": "PS",
+    "discipline": "Psychology",
+    "type": "Theory"
+   },
+   "commonness": 65
+  },
+  {
+   "id": "mc_schachter_singer_theory",
+   "name": "Schachter-Singer theory",
+   "syn": [
+    "Two-factor theory of emotion"
+   ],
+   "abbr": [],
+   "attrs": {
+    "section": "PS",
+    "discipline": "Psychology",
+    "type": "Theory"
+   },
+   "commonness": 65
+  },
+  {
+   "id": "mc_weber_s_law",
+   "name": "Weber's law",
+   "syn": [
+    "Weber-Fechner law"
+   ],
+   "abbr": [],
+   "attrs": {
+    "section": "PS",
+    "discipline": "Psychology",
+    "type": "Law/Principle"
+   },
+   "commonness": 60
+  },
+  {
+   "id": "mc_signal_detection_theory",
+   "name": "Signal detection theory",
+   "syn": [],
+   "abbr": [],
+   "attrs": {
+    "section": "PS",
+    "discipline": "Psychology",
+    "type": "Theory"
+   },
+   "commonness": 60
+  },
+  {
+   "id": "mc_elaboration_likelihood_model",
+   "name": "Elaboration likelihood model",
+   "syn": [],
+   "abbr": [
+    "ELM"
+   ],
+   "attrs": {
+    "section": "PS",
+    "discipline": "Psychology",
+    "type": "Theory"
+   },
+   "commonness": 60
+  },
+  {
+   "id": "mc_piaget_s_stages_of_cognitive_development",
+   "name": "Piaget's stages of cognitive development",
+   "syn": [
+    "Piaget"
+   ],
+   "abbr": [],
+   "attrs": {
+    "section": "PS",
+    "discipline": "Psychology",
+    "type": "Theory"
+   },
+   "commonness": 70
+  },
+  {
+   "id": "mc_erikson_s_psychosocial_stages",
+   "name": "Erikson's psychosocial stages",
+   "syn": [
+    "Erikson"
+   ],
+   "abbr": [],
+   "attrs": {
+    "section": "PS",
+    "discipline": "Psychology",
+    "type": "Theory"
+   },
+   "commonness": 65
+  },
+  {
+   "id": "mc_kohlberg_s_stages_of_moral_development",
+   "name": "Kohlberg's stages of moral development",
+   "syn": [
+    "Kohlberg"
+   ],
+   "abbr": [],
+   "attrs": {
+    "section": "PS",
+    "discipline": "Psychology",
+    "type": "Theory"
+   },
+   "commonness": 60
+  },
+  {
+   "id": "mc_maslow_s_hierarchy_of_needs",
+   "name": "Maslow's hierarchy of needs",
+   "syn": [
+    "Maslow"
+   ],
+   "abbr": [],
+   "attrs": {
+    "section": "PS",
+    "discipline": "Psychology",
+    "type": "Theory"
+   },
+   "commonness": 65
+  },
+  {
+   "id": "mc_functionalism",
+   "name": "Functionalism",
+   "syn": [
+    "Structural functionalism"
+   ],
+   "abbr": [],
+   "attrs": {
+    "section": "PS",
+    "discipline": "Sociology",
+    "type": "Theory"
+   },
+   "commonness": 70
+  },
+  {
+   "id": "mc_conflict_theory",
+   "name": "Conflict theory",
+   "syn": [],
+   "abbr": [],
+   "attrs": {
+    "section": "PS",
+    "discipline": "Sociology",
+    "type": "Theory"
+   },
+   "commonness": 70
+  },
+  {
+   "id": "mc_symbolic_interactionism",
+   "name": "Symbolic interactionism",
+   "syn": [],
+   "abbr": [],
+   "attrs": {
+    "section": "PS",
+    "discipline": "Sociology",
+    "type": "Theory"
+   },
+   "commonness": 70
+  },
+  {
+   "id": "mc_social_constructionism",
+   "name": "Social constructionism",
+   "syn": [],
+   "abbr": [],
+   "attrs": {
+    "section": "PS",
+    "discipline": "Sociology",
+    "type": "Theory"
+   },
+   "commonness": 60
+  },
+  {
+   "id": "mc_anomie",
+   "name": "Anomie",
+   "syn": [],
+   "abbr": [],
+   "attrs": {
+    "section": "PS",
+    "discipline": "Sociology",
+    "type": "Concept"
+   },
+   "commonness": 55
+  },
+  {
+   "id": "mc_cultural_capital",
+   "name": "Cultural capital",
+   "syn": [],
+   "abbr": [],
+   "attrs": {
+    "section": "PS",
+    "discipline": "Sociology",
+    "type": "Concept"
+   },
+   "commonness": 55
+  },
+  {
+   "id": "mc_looking_glass_self",
+   "name": "Looking-glass self",
+   "syn": [],
+   "abbr": [],
+   "attrs": {
+    "section": "PS",
+    "discipline": "Sociology",
+    "type": "Concept"
+   },
+   "commonness": 55
+  },
+  {
+   "id": "mc_bernoulli_s_principle",
+   "name": "Bernoulli's principle",
+   "syn": [
+    "Bernoulli equation"
+   ],
+   "abbr": [],
+   "attrs": {
+    "section": "CP",
+    "discipline": "Physics",
+    "type": "Law/Principle"
+   },
+   "commonness": 70
+  },
+  {
+   "id": "mc_poiseuille_s_law",
+   "name": "Poiseuille's law",
+   "syn": [
+    "Hagen-Poiseuille equation"
+   ],
+   "abbr": [],
+   "attrs": {
+    "section": "CP",
+    "discipline": "Physics",
+    "type": "Law/Principle"
+   },
+   "commonness": 60
+  },
+  {
+   "id": "mc_ohm_s_law",
+   "name": "Ohm's law",
+   "syn": [],
+   "abbr": [],
+   "attrs": {
+    "section": "CP",
+    "discipline": "Physics",
+    "type": "Law/Principle"
+   },
+   "commonness": 70
+  },
+  {
+   "id": "mc_snell_s_law",
+   "name": "Snell's law",
+   "syn": [],
+   "abbr": [],
+   "attrs": {
+    "section": "CP",
+    "discipline": "Physics",
+    "type": "Law/Principle"
+   },
+   "commonness": 65
+  },
+  {
+   "id": "mc_doppler_effect",
+   "name": "Doppler effect",
+   "syn": [],
+   "abbr": [],
+   "attrs": {
+    "section": "CP",
+    "discipline": "Physics",
+    "type": "Law/Principle"
+   },
+   "commonness": 65
+  },
+  {
+   "id": "mc_le_chatelier_s_principle",
+   "name": "Le Chatelier's principle",
+   "syn": [],
+   "abbr": [],
+   "attrs": {
+    "section": "CP",
+    "discipline": "General Chemistry",
+    "type": "Law/Principle"
+   },
+   "commonness": 80
+  },
+  {
+   "id": "mc_henderson_hasselbalch_equation",
+   "name": "Henderson-Hasselbalch equation",
+   "syn": [],
+   "abbr": [],
+   "attrs": {
+    "section": "CP",
+    "discipline": "General Chemistry",
+    "type": "Law/Principle"
+   },
+   "commonness": 80
+  },
+  {
+   "id": "mc_michaelis_menten_kinetics",
+   "name": "Michaelis-Menten kinetics",
+   "syn": [
+    "Michaelis-Menten equation"
+   ],
+   "abbr": [],
+   "attrs": {
+    "section": "CP",
+    "discipline": "Biochemistry",
+    "type": "Law/Principle"
+   },
+   "commonness": 75
+  },
+  {
+   "id": "mc_sds_page",
+   "name": "SDS-PAGE",
+   "syn": [],
+   "abbr": [],
+   "attrs": {
+    "section": "CP",
+    "discipline": "Biochemistry",
+    "type": "Technique"
+   },
+   "commonness": 70
+  },
+  {
+   "id": "mc_polymerase_chain_reaction",
+   "name": "Polymerase chain reaction",
+   "syn": [],
+   "abbr": [
+    "PCR"
+   ],
+   "attrs": {
+    "section": "BB",
+    "discipline": "Biology",
+    "type": "Technique"
+   },
+   "commonness": 75
+  },
+  {
+   "id": "mc_western_blot",
+   "name": "Western blot",
+   "syn": [],
+   "abbr": [],
+   "attrs": {
+    "section": "BB",
+    "discipline": "Biochemistry",
+    "type": "Technique"
+   },
+   "commonness": 65
+  },
+  {
+   "id": "mc_elisa",
+   "name": "ELISA",
+   "syn": [
+    "Enzyme-linked immunosorbent assay"
+   ],
+   "abbr": [],
+   "attrs": {
+    "section": "BB",
+    "discipline": "Biochemistry",
+    "type": "Technique"
+   },
+   "commonness": 60
+  },
+  {
+   "id": "mc_thin_layer_chromatography",
+   "name": "Thin-layer chromatography",
+   "syn": [],
+   "abbr": [
+    "TLC"
+   ],
+   "attrs": {
+    "section": "CP",
+    "discipline": "Organic Chemistry",
+    "type": "Technique"
+   },
+   "commonness": 65
+  },
+  {
+   "id": "mc_gas_chromatography",
+   "name": "Gas chromatography",
+   "syn": [],
+   "abbr": [
+    "GC"
+   ],
+   "attrs": {
+    "section": "CP",
+    "discipline": "Organic Chemistry",
+    "type": "Technique"
+   },
+   "commonness": 55
+  },
+  {
+   "id": "mc_fractional_distillation",
+   "name": "Fractional distillation",
+   "syn": [
+    "Distillation"
+   ],
+   "abbr": [],
+   "attrs": {
+    "section": "CP",
+    "discipline": "Organic Chemistry",
+    "type": "Technique"
+   },
+   "commonness": 60
+  },
+  {
+   "id": "mc_infrared_spectroscopy",
+   "name": "Infrared spectroscopy",
+   "syn": [
+    "IR spectroscopy"
+   ],
+   "abbr": [
+    "IR"
+   ],
+   "attrs": {
+    "section": "CP",
+    "discipline": "Organic Chemistry",
+    "type": "Technique"
+   },
+   "commonness": 65
+  },
+  {
+   "id": "mc_proton_nmr_spectroscopy",
+   "name": "Proton NMR spectroscopy",
+   "syn": [
+    "NMR",
+    "1H NMR"
+   ],
+   "abbr": [],
+   "attrs": {
+    "section": "CP",
+    "discipline": "Organic Chemistry",
+    "type": "Technique"
+   },
+   "commonness": 65
+  },
+  {
+   "id": "mc_mass_spectrometry",
+   "name": "Mass spectrometry",
+   "syn": [],
+   "abbr": [],
+   "attrs": {
+    "section": "CP",
+    "discipline": "Organic Chemistry",
+    "type": "Technique"
+   },
+   "commonness": 55
+  },
+  {
+   "id": "mc_histidine",
+   "name": "Histidine",
+   "syn": [],
+   "abbr": [],
+   "attrs": {
+    "section": "BB",
+    "discipline": "Biochemistry",
+    "type": "Biomolecule"
+   },
+   "commonness": 65
+  },
+  {
+   "id": "mc_cysteine",
+   "name": "Cysteine",
+   "syn": [],
+   "abbr": [],
+   "attrs": {
+    "section": "BB",
+    "discipline": "Biochemistry",
+    "type": "Biomolecule"
+   },
+   "commonness": 60
+  },
+  {
+   "id": "mc_glycine",
+   "name": "Glycine",
+   "syn": [],
+   "abbr": [],
+   "attrs": {
+    "section": "BB",
+    "discipline": "Biochemistry",
+    "type": "Biomolecule"
+   },
+   "commonness": 60
+  },
+  {
+   "id": "mc_proline",
+   "name": "Proline",
+   "syn": [],
+   "abbr": [],
+   "attrs": {
+    "section": "BB",
+    "discipline": "Biochemistry",
+    "type": "Biomolecule"
+   },
+   "commonness": 60
+  },
+  {
+   "id": "mc_lysine",
+   "name": "Lysine",
+   "syn": [],
+   "abbr": [],
+   "attrs": {
+    "section": "BB",
+    "discipline": "Biochemistry",
+    "type": "Biomolecule"
+   },
+   "commonness": 55
+  },
+  {
+   "id": "mc_glycogen",
+   "name": "Glycogen",
+   "syn": [],
+   "abbr": [],
+   "attrs": {
+    "section": "BB",
+    "discipline": "Biochemistry",
+    "type": "Biomolecule"
+   },
+   "commonness": 65
+  },
+  {
+   "id": "mc_cholesterol",
+   "name": "Cholesterol",
+   "syn": [],
+   "abbr": [],
+   "attrs": {
+    "section": "BB",
+    "discipline": "Biochemistry",
+    "type": "Biomolecule"
+   },
+   "commonness": 65
+  },
+  {
+   "id": "mc_nadh",
+   "name": "NADH",
+   "syn": [
+    "Nicotinamide adenine dinucleotide"
+   ],
+   "abbr": [],
+   "attrs": {
+    "section": "BB",
+    "discipline": "Biochemistry",
+    "type": "Biomolecule"
+   },
+   "commonness": 60
+  },
+  {
+   "id": "mc_hemoglobin",
+   "name": "Hemoglobin",
+   "syn": [],
+   "abbr": [],
+   "attrs": {
+    "section": "BB",
+    "discipline": "Biology",
+    "type": "Biomolecule"
+   },
+   "commonness": 70
+  }
+ ]
+}

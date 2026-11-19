@@ -1,0 +1,13 @@
+[
+  ["Avogadro's number", "N_A = 6.022 × 10²³ mol⁻¹"],
+  ["Gas constant", "R = 8.314 J/(mol·K) = 0.0821 L·atm/(mol·K)"],
+  ["Faraday constant", "F = 96,485 C/mol"],
+  ["Planck's constant", "h = 6.626 × 10⁻³⁴ J·s"],
+  ["Speed of light", "c = 3.00 × 10⁸ m/s"],
+  ["Elementary charge", "e = 1.602 × 10⁻¹⁹ C"],
+  ["Gravitational acceleration", "g = 9.8 m/s²"],
+  ["Coulomb constant", "k = 8.99 × 10⁹ N·m²/C²"],
+  ["Standard pressure", "1 atm = 101.3 kPa = 760 mm Hg"],
+  ["Density of water", "1.00 g/mL = 1,000 kg/m³"],
+  ["Energy", "1 cal = 4.184 J; 1 eV = 1.602 × 10⁻¹⁹ J"]
+]

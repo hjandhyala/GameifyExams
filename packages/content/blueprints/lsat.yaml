@@ -1,0 +1,35 @@
+track: lsat
+version: 1
+reconciledWith: "LSAC LSAT format (since Aug 2024: 2 LR + 1 RC scored, no Analytical Reasoning) — editorial weights"
+nodes:
+  LSAT.LR:
+    name: Logical Reasoning
+    weight: 0.67
+    children:
+      LSAT.LR.FLAW: { name: Flaw, weight: 0.13 }
+      LSAT.LR.MBT: { name: "Must be true / inference", weight: 0.07 }
+      LSAT.LR.MSS: { name: "Most strongly supported", weight: 0.05 }
+      LSAT.LR.CANNOT: { name: "Cannot be true", weight: 0.02 }
+      LSAT.LR.NA: { name: "Necessary assumption", weight: 0.09 }
+      LSAT.LR.SA: { name: "Sufficient assumption", weight: 0.05 }
+      LSAT.LR.STR: { name: Strengthen, weight: 0.08 }
+      LSAT.LR.WKN: { name: Weaken, weight: 0.08 }
+      LSAT.LR.EVAL: { name: Evaluate, weight: 0.02 }
+      LSAT.LR.PRIN: { name: Principle, weight: 0.08 }
+      LSAT.LR.MAIN: { name: "Main point", weight: 0.04 }
+      LSAT.LR.ROLE: { name: "Role of a claim", weight: 0.04 }
+      LSAT.LR.METHOD: { name: "Method of reasoning", weight: 0.02 }
+      LSAT.LR.PARADOX: { name: "Resolve the paradox", weight: 0.06 }
+      LSAT.LR.POINT: { name: "Point at issue", weight: 0.05 }
+      LSAT.LR.PAR: { name: "Parallel reasoning / parallel flaw", weight: 0.08 }
+      LSAT.LR.OTHER: { name: Other, weight: 0.04 }
+  LSAT.RC:
+    name: Reading Comprehension
+    weight: 0.33
+    children:
+      LSAT.RC.MAIN: { name: "Main idea", weight: 0.2 }
+      LSAT.RC.DETAIL: { name: Detail, weight: 0.2 }
+      LSAT.RC.INFER: { name: Inference, weight: 0.25 }
+      LSAT.RC.ATTITUDE: { name: "Author's attitude", weight: 0.1 }
+      LSAT.RC.FUNCTION: { name: Function, weight: 0.15 }
+      LSAT.RC.COMPARATIVE: { name: "Comparative reading", weight: 0.1 }

@@ -1,0 +1,17 @@
+name: Content (nightly schedule + compile)
+on:
+  schedule: [{ cron: '0 5 * * *' }]
+  workflow_dispatch:
+jobs:
+  schedule:
+    runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci
+      - run: npm run pipeline -- schedule --days 28
+      - run: npm run pipeline -- lock --days 7
+      - run: npm run pipeline -- buffer

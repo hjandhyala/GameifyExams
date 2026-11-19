@@ -1,0 +1,30 @@
+name: Content (weekly generation)
+on:
+  schedule: [{ cron: '0 6 * * 1' }]
+  workflow_dispatch:
+    inputs:
+      track: { description: 'track (mcat|lsat|boards|bar)', required: true, default: boards }
+      game: { description: 'game (quartet|jargon|workup|gauntlet|anatomy|verdict)', required: true, default: gauntlet }
+      n: { description: 'items to draft', required: true, default: '20' }
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      OPENFDA_API_KEY: ${{ secrets.OPENFDA_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci
+      - run: npm run pipeline -- plan --weeks 6
+      - name: Draft (Message Batches API, 50% cost)
+        id: gen
+        run: npm run pipeline -- generate --track ${{ inputs.track || 'boards' }} --game ${{ inputs.game || 'gauntlet' }} --n ${{ inputs.n || '20' }} --batch | tee gen.log
+      - name: Collect + validate
+        run: |
+          RUN=$(grep -o 'as run [^ .]*' gen.log | awk '{print $3}')
+          npm run pipeline -- collect --run "$RUN"
+          npm run pipeline -- validate

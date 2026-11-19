@@ -1,0 +1,21 @@
+{
+  "name": "@prepdle/pipeline",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "prepdle-pipeline": "./src/cli.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.10.0",
+    "@prepdle/content": "*",
+    "@prepdle/core": "*",
+    "@prepdle/db": "*",
+    "yaml": "^2.8.0",
+    "zod": "^4.6.7",
+    "drizzle-orm": "^0.45.4"
+  },
+  "exports": {
+    "./publish": "./src/publish/index.ts"
+  }
+}
