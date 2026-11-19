@@ -19,6 +19,9 @@ export default function PrivacyPage() {
             us find flawed questions. Move details are deleted after 180 days, and everything after 400 days of inactivity.
           </li>
           <li>
+            <b>Daily visits</b>: one record per device per day (hashed device id and date only) so we can count active users.
+          </li>
+          <li>
             <b>Reports</b> you send about content (kept up to 2 years).
           </li>
           <li>

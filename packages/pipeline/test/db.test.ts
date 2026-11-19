@@ -17,7 +17,7 @@ afterAll(async () => {
 
 describe('database + scheduling (PGlite)', () => {
   it('migrates idempotently', async () => {
-    expect(await migrate(h)).toEqual(['0001_init']);
+    expect(await migrate(h)).toEqual(['0001_init', '0002_daily_visitors']);
     expect(await migrate(h)).toEqual([]);
   });
 
@@ -68,6 +68,22 @@ describe('database + scheduling (PGlite)', () => {
     expect(hist[0]).toMatchObject({ date: '2026-11-18', track: 'bar', gameId: 'jargon', passed: true });
     await repo.deleteDevice(dev);
     expect(await repo.deviceHistory(dev)).toEqual([]);
+  });
+
+  it('user metrics: visitors, players, new vs returning, retention', async () => {
+    const a = Buffer.from('device-a'.padEnd(32, '0'));
+    const b = Buffer.from('device-b'.padEnd(32, '0'));
+    await repo.recordVisit('2026-11-17', a, 'bar');
+    await repo.recordVisit('2026-11-18', a, 'bar');
+    await repo.recordVisit('2026-11-18', a, 'bar'); // idempotent per day
+    await repo.recordVisit('2026-11-18', b, null);
+    const p = (await repo.getPuzzle('bar', 'quartet', '2026-11-18'))!;
+    await repo.insertResult({ puzzleId: p.id, version: 1, deviceHash: a, passed: true, bucket: '0', outcome: {}, transcript: [] });
+    const m = await repo.userMetrics('2026-11-18');
+    expect(m.totals).toMatchObject({ all_time: 2, dau: 2, wau: 2, players_today: 1, completions_today: 1 });
+    expect(m.daily[0]).toMatchObject({ date: '2026-11-18', visitors: 2, new_visitors: 1, players: 1 });
+    expect(m.retention.find((r) => r.cohort === '2026-11-17')).toMatchObject({ size: 1, d1: 1 });
+    expect(m.byGame).toEqual([{ track: 'bar', game_id: 'quartet', completions: 1, passed: 1 }]);
   });
 
   it('versions: patch and void', async () => {

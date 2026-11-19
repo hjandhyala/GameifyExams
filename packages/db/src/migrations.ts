@@ -203,4 +203,17 @@ CREATE TABLE kb.facts (
 );
 `,
   },
+  {
+    id: '0002_daily_visitors',
+    sql: `-- One row per anonymous device per local puzzle day (admin user analytics).
+CREATE TABLE daily_visitors (
+  date date NOT NULL,
+  device_hash bytea NOT NULL,
+  track track_id,
+  created_at timestamptz NOT NULL DEFAULT now(),
+  PRIMARY KEY (date, device_hash)
+);
+CREATE INDEX daily_visitors_device_idx ON daily_visitors (device_hash, date);
+`,
+  },
 ];

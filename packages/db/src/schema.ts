@@ -201,6 +201,17 @@ export const pipelineRuns = pgTable('pipeline_runs', {
   finishedAt: timestamp('finished_at', { withTimezone: true }),
 });
 
+export const dailyVisitors = pgTable(
+  'daily_visitors',
+  {
+    date: date('date').notNull(),
+    deviceHash: bytea('device_hash').notNull(),
+    track: trackId('track'),
+    createdAt: ts('created_at'),
+  },
+  (t) => [primaryKey({ columns: [t.date, t.deviceHash] })],
+);
+
 export const auditLog = pgTable('audit_log', {
   id: bigserial('id', { mode: 'number' }).primaryKey(),
   actor: text('actor').notNull(),

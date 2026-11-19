@@ -3,6 +3,9 @@ import { useEffect, useState, type ReactNode } from 'react';
 import { track } from '@/client/analytics';
 import { flushOutbox } from '@/client/outbox';
 import { maybeRestore } from '@/client/restore';
+import { currentDate } from '@/client/today';
+import * as storage from '@/client/storage';
+import { debugNowHeader } from '@/client/debug';
 import { useStore } from '@/client/store';
 import { ToastProvider, useToast } from './Toast';
 
@@ -37,6 +40,18 @@ function Boot() {
     const params = new URL(window.location.href).searchParams;
     track('app_open', { source: params.get('source') ?? (params.get('s') ? 'share' : 'web'), returning: useStore.getState().history.length > 0 });
     maybeRestore().then((n) => n > 0 && toast('Welcome back. We restored your streak.', 3500));
+    // Once-per-day anonymous check-in (powers admin user counts).
+    const day = currentDate();
+    if (storage.read<string | null>('pinged', null) !== day) {
+      fetch('/api/v1/ping', {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: { 'content-type': 'application/json', ...debugNowHeader() },
+        body: JSON.stringify({ date: day, track: document.documentElement.dataset.track || useStore.getState().settings.favoriteTrack }),
+      })
+        .then((r) => r.ok && storage.write('pinged', day))
+        .catch(() => {});
+    }
     void flushOutbox();
     const onOnline = () => {
       setOffline(false);

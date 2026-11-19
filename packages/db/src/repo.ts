@@ -15,6 +15,7 @@ import {
   results,
   staffUsers,
   transferCodes,
+  dailyVisitors,
 } from './schema';
 
 export type ItemRow = typeof items.$inferSelect;
@@ -225,6 +226,55 @@ export class Repo {
     await this.db.delete(itemResponses).where(eq(itemResponses.deviceHash, deviceHash));
     await this.db.delete(reports).where(eq(reports.deviceHash, deviceHash));
     await this.db.delete(transferCodes).where(eq(transferCodes.deviceHash, deviceHash));
+    await this.db.delete(dailyVisitors).where(eq(dailyVisitors.deviceHash, deviceHash));
+  }
+
+  // ------------------------------------------------------------------ user analytics (admin)
+  async recordVisit(date: ISODate, deviceHash: Buffer, track: TrackId | null): Promise<void> {
+    await this.db.insert(dailyVisitors).values({ date, deviceHash, track }).onConflictDoNothing();
+  }
+
+  /** Aggregate user metrics for the admin Users page. A "user" is an anonymous device. */
+  async userMetrics(today: ISODate) {
+    const q = <T>(query: ReturnType<typeof sql>) => rows<T>(this.db, query);
+    const [totals] = await q<{ all_time: number; dau: number; wau: number; mau: number; players_today: number; players_7: number; players_30: number; completions_today: number }>(sql`
+      SELECT
+        (SELECT count(DISTINCT device_hash)::int FROM daily_visitors) AS all_time,
+        (SELECT count(*)::int FROM daily_visitors WHERE date = ${today}::date) AS dau,
+        (SELECT count(DISTINCT device_hash)::int FROM daily_visitors WHERE date > ${today}::date - 7) AS wau,
+        (SELECT count(DISTINCT device_hash)::int FROM daily_visitors WHERE date > ${today}::date - 30) AS mau,
+        (SELECT count(DISTINCT r.device_hash)::int FROM results r JOIN puzzles p ON p.id = r.puzzle_id WHERE p.date = ${today}::date) AS players_today,
+        (SELECT count(DISTINCT r.device_hash)::int FROM results r JOIN puzzles p ON p.id = r.puzzle_id WHERE p.date > ${today}::date - 7) AS players_7,
+        (SELECT count(DISTINCT r.device_hash)::int FROM results r JOIN puzzles p ON p.id = r.puzzle_id WHERE p.date > ${today}::date - 30) AS players_30,
+        (SELECT count(*)::int FROM results r JOIN puzzles p ON p.id = r.puzzle_id WHERE p.date = ${today}::date) AS completions_today`);
+    const daily = await q<{ date: string; visitors: number; new_visitors: number; players: number; completions: number }>(sql`
+      WITH days AS (SELECT generate_series(${today}::date - 29, ${today}::date, interval '1 day')::date AS d),
+      first_seen AS (SELECT device_hash, min(date) AS first FROM daily_visitors GROUP BY device_hash)
+      SELECT to_char(days.d, 'YYYY-MM-DD') AS date,
+        (SELECT count(*)::int FROM daily_visitors v WHERE v.date = days.d) AS visitors,
+        (SELECT count(*)::int FROM first_seen f WHERE f.first = days.d) AS new_visitors,
+        (SELECT count(DISTINCT r.device_hash)::int FROM results r JOIN puzzles p ON p.id = r.puzzle_id WHERE p.date = days.d) AS players,
+        (SELECT count(*)::int FROM results r JOIN puzzles p ON p.id = r.puzzle_id WHERE p.date = days.d) AS completions
+      FROM days ORDER BY days.d DESC`);
+    const retention = await q<{ cohort: string; size: number; d1: number; d7: number }>(sql`
+      WITH first_seen AS (SELECT device_hash, min(date) AS first FROM daily_visitors GROUP BY device_hash)
+      SELECT to_char(f.first, 'YYYY-MM-DD') AS cohort, count(*)::int AS size,
+        count(*) FILTER (WHERE EXISTS (SELECT 1 FROM daily_visitors v WHERE v.device_hash = f.device_hash AND v.date = f.first + 1))::int AS d1,
+        count(*) FILTER (WHERE EXISTS (SELECT 1 FROM daily_visitors v WHERE v.device_hash = f.device_hash AND v.date = f.first + 7))::int AS d7
+      FROM first_seen f WHERE f.first > ${today}::date - 30 GROUP BY f.first ORDER BY f.first DESC`);
+    const byTrack = await q<{ track: string; today: number; week: number }>(sql`
+      SELECT p.track,
+        count(DISTINCT r.device_hash) FILTER (WHERE p.date = ${today}::date)::int AS today,
+        count(DISTINCT r.device_hash) FILTER (WHERE p.date > ${today}::date - 7)::int AS week
+      FROM results r JOIN puzzles p ON p.id = r.puzzle_id WHERE p.date > ${today}::date - 7 GROUP BY p.track ORDER BY p.track`);
+    const byGame = await q<{ track: string; game_id: string; completions: number; passed: number }>(sql`
+      SELECT p.track, p.game_id, count(*)::int AS completions, count(*) FILTER (WHERE r.passed)::int AS passed
+      FROM results r JOIN puzzles p ON p.id = r.puzzle_id WHERE p.date = ${today}::date GROUP BY p.track, p.game_id ORDER BY 1, 2`);
+    const engagement = await q<{ days_active: number; devices: number }>(sql`
+      SELECT days_active, count(*)::int AS devices FROM (
+        SELECT device_hash, count(*)::int AS days_active FROM daily_visitors WHERE date > ${today}::date - 7 GROUP BY device_hash
+      ) x GROUP BY days_active ORDER BY days_active`);
+    return { totals: totals!, daily, retention, byTrack, byGame, engagement };
   }
 
   // ------------------------------------------------------------------ transfer codes
@@ -364,6 +414,7 @@ export class Repo {
       this.db,
       sql`DELETE FROM results WHERE device_hash IN (SELECT device_hash FROM results GROUP BY device_hash HAVING max(created_at) < now() - interval '400 days')`,
     );
+    await rows(this.db, sql`DELETE FROM daily_visitors WHERE date < now()::date - 400`);
     return { transcripts: t[0]?.n ?? 0, codes: c[0]?.n ?? 0 };
   }
 
