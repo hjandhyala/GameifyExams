@@ -44,6 +44,13 @@ function parseArgs(argv: string[]) {
 
 const LAUNCH = process.env.LAUNCH_DATE ?? '2026-07-15';
 
+// Load a local .env (gitignored) for pipeline secrets such as ANTHROPIC_API_KEY and DATABASE_URL.
+try {
+  process.loadEnvFile?.('.env');
+} catch {
+  /* no .env */
+}
+
 async function main() {
   const { cmd, args, flags } = parseArgs(process.argv.slice(2));
   if (!cmd || cmd === 'help') {
@@ -132,9 +139,10 @@ async function main() {
       }
       case 'validate': {
         await repo.startRun(runId, 'validate', { run: flags.run });
-        const r = await validateDrafts(repo, { runId: flags.run as string | undefined, llm: !flags['no-llm'], log, limit: flags.limit ? Number(flags.limit) : undefined });
+        const autoApprove = !!flags['auto-approve'] || process.env.AUTO_APPROVE_VALIDATED === '1';
+        const r = await validateDrafts(repo, { runId: flags.run as string | undefined, llm: !flags['no-llm'], log, limit: flags.limit ? Number(flags.limit) : undefined, autoApprove });
         await repo.finishRun(runId, 'done', r, r.cost);
-        log(`validated ${r.total}: ${r.passed} to review · $${r.cost.toFixed(2)}`);
+        log(`validated ${r.total}: ${r.passed} passed, ${r.approved} auto-approved (provisional) · $${r.cost.toFixed(2)}`);
         break;
       }
       case 'eval-golden': {
@@ -201,7 +209,7 @@ function require_help() {
   plan [--weeks 6]                bank inventory vs. demand per (track, game)
   generate --track --game --n     draft items with Claude (add --batch for the Message Batches API)
   collect --run <id>              collect a batch run into draft items
-  validate [--run id] [--no-llm]  run validators V1–V8; drafts → in_review / auto_rejected
+  validate [--run id] [--no-llm] [--auto-approve]  run validators V1–V8; drafts → in_review / auto_rejected (or approved+provisional)
   eval-golden [--track --game]    run validators on the reviewed golden set (CI gate for prompt/model changes)
   schedule [--from --days]        fill empty slots from approved items and compile puzzles
   lock [--days 7] · buffer · psychometrics · cost [--since 30] · catalog`;
