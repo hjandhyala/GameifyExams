@@ -277,10 +277,14 @@ export async function generateBatch(repo: Repo, slots: Slot[], runId: string): P
   return batchId;
 }
 
-export async function collectBatch(repo: Repo, runId: string, log: Log): Promise<{ inserted: number; failed: number; cost: number }> {
+export async function collectBatch(repo: Repo, runId: string, log: Log): Promise<{ inserted: number; failed: number; cost: number; batchId?: string; slots?: Slot[] }> {
   const run = (await repo.listRuns(500)).find((r) => r.id === runId);
   if (!run) throw new Error(`run ${runId} not found`);
-  const stats = run.stats as { batchId: string; slots: Slot[] };
+  const stats = run.stats as { batchId?: string; slots?: Slot[]; collected?: unknown };
+  if (!stats.batchId || !stats.slots || run.status === 'collected') {
+    log(`run ${runId} already collected; nothing to do`);
+    return { inserted: 0, failed: 0, cost: 0, batchId: stats.batchId, slots: stats.slots };
+  }
   await waitForBatch(stats.batchId, log);
   const bySlot = new Map(stats.slots.map((s, i) => [`s${i}`, s]));
   let inserted = 0;
@@ -317,5 +321,5 @@ export async function collectBatch(repo: Repo, runId: string, log: Log): Promise
     if (item) inserted += await repo.insertItems([item]);
     else failed++;
   }
-  return { inserted, failed, cost };
+  return { inserted, failed, cost, batchId: stats.batchId, slots: stats.slots };
 }

@@ -133,7 +133,8 @@ async function main() {
       case 'collect': {
         const id = String(flags.run);
         const r = await collectBatch(repo, id, log);
-        await repo.finishRun(id, 'collected', r, r.cost);
+        // Keep batchId/slots in the run record so re-collecting stays a no-op instead of failing.
+        if (r.batchId) await repo.finishRun(id, 'collected', { batchId: r.batchId, slots: r.slots, collected: { inserted: r.inserted, failed: r.failed } }, r.cost);
         log(`collected ${r.inserted} drafts (${r.failed} failed) · $${r.cost.toFixed(2)}`);
         break;
       }
