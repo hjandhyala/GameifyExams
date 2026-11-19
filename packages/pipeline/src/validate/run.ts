@@ -324,21 +324,31 @@ export async function validateDrafts(repo: Repo, opts: { runId?: string; llm: bo
   let passed = 0;
   let approved = 0;
   let cost = 0;
-  for (const it of drafts) {
-    const r = await validateItem(repo, it, opts);
-    cost += r.costUsd;
-    if (r.passed) passed++;
-    const mode = opts.autoApprove ?? 'off';
-    const auto = opts.llm && ((mode === 'strict' && autoApprovable(r)) || (mode === 'launch' && r.passed));
-    const status = auto ? 'approved' : r.passed ? 'in_review' : 'auto_rejected';
-    await repo.updateItem(
-      it.id,
-      { validation: r, status, ...(auto ? { provenance: { ...(it.provenance as object), provisional: true, autoApproveMode: mode, autoApprovedAt: new Date().toISOString() } } : {}) },
-      'validator',
-      auto ? 'validate:auto_approve' : r.passed ? 'validate:pass' : 'validate:fail',
-    );
-    if (auto) approved++;
-    opts.log(`${it.id} ${it.track}/${it.gameId}: ${status} (score ${r.score}) ${r.checks.filter((c) => c.status !== 'pass').map((c) => `${c.id}:${c.status}`).join(' ')}`);
-  }
+  // Items are independent: validate with a small worker pool (EXAMDLE_VALIDATE_CONCURRENCY, default 8).
+  const concurrency = Math.max(1, Number(process.env.EXAMDLE_VALIDATE_CONCURRENCY ?? 8));
+  const queue = [...drafts];
+  const worker = async () => {
+    for (let it = queue.shift(); it; it = queue.shift()) {
+      try {
+        const r = await validateItem(repo, it, opts);
+        cost += r.costUsd;
+        if (r.passed) passed++;
+        const mode = opts.autoApprove ?? 'off';
+        const auto = opts.llm && ((mode === 'strict' && autoApprovable(r)) || (mode === 'launch' && r.passed));
+        const status = auto ? 'approved' : r.passed ? 'in_review' : 'auto_rejected';
+        await repo.updateItem(
+          it.id,
+          { validation: r, status, ...(auto ? { provenance: { ...(it.provenance as object), provisional: true, autoApproveMode: mode, autoApprovedAt: new Date().toISOString() } } : {}) },
+          'validator',
+          auto ? 'validate:auto_approve' : r.passed ? 'validate:pass' : 'validate:fail',
+        );
+        if (auto) approved++;
+        opts.log(`${it.id} ${it.track}/${it.gameId}: ${status} (score ${r.score}) ${r.checks.filter((c) => c.status !== 'pass').map((c) => `${c.id}:${c.status}`).join(' ')}`);
+      } catch (e) {
+        opts.log(`${it.id}: validation error (left as draft): ${(e as Error).message.slice(0, 160)}`);
+      }
+    }
+  };
+  await Promise.all(Array.from({ length: Math.min(concurrency, drafts.length) }, worker));
   return { total: drafts.length, passed, approved, cost };
 }
