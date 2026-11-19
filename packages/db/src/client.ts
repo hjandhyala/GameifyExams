@@ -17,11 +17,11 @@ export interface DbHandle {
  * Creates a database handle.
  * - `DATABASE_URL` set → Postgres (Neon or any Postgres) via postgres.js.
  * - otherwise → embedded PGlite (WASM Postgres) persisted at `PGLITE_DIR`,
- *   or in memory when `PGLITE_DIR=memory`. Default: `node_modules/.cache/prepdle-pglite` (ignored by file watchers). Used for local development and tests (no Docker required).
+ *   or in memory when `PGLITE_DIR=memory`. Default: `node_modules/.cache/examdle-pglite` (ignored by file watchers). Used for local development and tests (no Docker required).
  */
 export async function createDb(opts: { url?: string; pgliteDir?: string } = {}): Promise<DbHandle> {
   const url = opts.url ?? process.env.DATABASE_URL;
-  if (!url && (process.env.VERCEL_ENV === 'production' || process.env.PREPDLE_PRODUCTION === '1'))
+  if (!url && (process.env.VERCEL_ENV === 'production' || process.env.EXAMDLE_PRODUCTION === '1'))
     throw new Error('DATABASE_URL is required in production (embedded PGlite is for development only)');
   if (url) {
     const { default: postgres } = await import('postgres');
@@ -46,7 +46,7 @@ export async function createDb(opts: { url?: string; pgliteDir?: string } = {}):
   const { PGlite } = await import('@electric-sql/pglite');
   const { drizzle } = await import('drizzle-orm/pglite');
   // Default lives under node_modules/.cache so dev-server file watchers ignore database writes.
-  const dir = opts.pgliteDir ?? process.env.PGLITE_DIR ?? 'node_modules/.cache/prepdle-pglite';
+  const dir = opts.pgliteDir ?? process.env.PGLITE_DIR ?? 'node_modules/.cache/examdle-pglite';
   if (dir !== 'memory') {
     const { mkdirSync } = await import('node:fs');
     const { dirname } = await import('node:path');

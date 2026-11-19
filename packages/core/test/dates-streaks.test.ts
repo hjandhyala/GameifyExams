@@ -109,12 +109,12 @@ describe('streaks', () => {
 describe('share & stats', () => {
   it('game share text', () => {
     expect(buildGameShare({ track: 'boards', gameId: 'workup', number: 127, scoreLabel: '3/6', lines: ['🔴🟡🟢⚪⚪⚪'], streak: 12 })).toBe(
-      'Prepdle · Boards Workup #127 · 3/6\n🔴🟡🟢⚪⚪⚪\n🔥12 · prepdle.app/boards',
+      'Examdle · Boards Workup #127 · 3/6\n🔴🟡🟢⚪⚪⚪\n🔥12 · examdle.com/boards',
     );
   });
   it('daily card', () => {
     const card = buildDailyCard({ track: 'bar', date: '2026-11-18', number: 127, games: [{ gameId: 'quartet', scoreLabel: '✅ 1 mistake' }], streak: 3 });
-    expect(card.split('\n')[0]).toBe('Prepdle Bar · Wed Nov 18 · #127');
+    expect(card.split('\n')[0]).toBe('Examdle Bar · Wed Nov 18 · #127');
     expect(card).toContain('📜 Doctrine  —');
     expect(card).toContain('🔥 3-day streak');
   });

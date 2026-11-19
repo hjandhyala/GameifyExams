@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Prepdle content pipeline CLI (§12.2). Run with `npm run pipeline -- <command> [--flags]`.
+ * Examdle content pipeline CLI (§12.2). Run with `npm run pipeline -- <command> [--flags]`.
  *
  *   migrate | seed-fixtures | build-assets
  *   ingest <sources|clinicaltables|mesh|rxclass|openfda|pubchem|wikidata|courtlistener|url> [...]
@@ -201,7 +201,7 @@ async function main() {
 }
 
 function require_help() {
-  return `Prepdle pipeline
+  return `Examdle pipeline
   migrate                         apply DB migrations (DATABASE_URL, or local PGlite under node_modules/.cache)
   seed-fixtures                   insert reviewed fixture items + source registry
   build-assets                    rebuild hashed dictionaries/vocab assets for the web app

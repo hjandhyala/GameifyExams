@@ -9,8 +9,8 @@ interface DbState {
   ensuredFor?: string;
   ensuring?: Promise<unknown>;
 }
-const g = globalThis as unknown as { __prepdleDb?: DbState };
-const state: DbState = (g.__prepdleDb ??= {});
+const g = globalThis as unknown as { __examdleDb?: DbState };
+const state: DbState = (g.__examdleDb ??= {});
 
 async function open(): Promise<DbHandle> {
   const h = await createDb();

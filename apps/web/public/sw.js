@@ -1,8 +1,8 @@
-/* Prepdle service worker (§6.9): app-shell + immutable asset caching; never caches evaluate/results. */
+/* Examdle service worker (§6.9): app-shell + immutable asset caching; never caches evaluate/results. */
 const VERSION = 'v1';
-const SHELL = `prepdle-shell-${VERSION}`;
-const ASSETS = `prepdle-assets-${VERSION}`;
-const PUZZLES = `prepdle-puzzles-${VERSION}`;
+const SHELL = `examdle-shell-${VERSION}`;
+const ASSETS = `examdle-assets-${VERSION}`;
+const PUZZLES = `examdle-puzzles-${VERSION}`;
 
 self.addEventListener('install', (e) => {
   e.waitUntil(caches.open(SHELL).then((c) => c.addAll(['/', '/icons/icon.svg', '/manifest.webmanifest']).catch(() => {})));

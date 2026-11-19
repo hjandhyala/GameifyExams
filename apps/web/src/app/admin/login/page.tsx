@@ -8,7 +8,7 @@ export default function LoginPage() {
   const dev = authProviders.some((p) => p.id === 'dev');
   return (
     <main className="mx-auto max-w-sm px-4 py-20">
-      <h1 className="text-2xl font-extrabold">Prepdle staff</h1>
+      <h1 className="text-2xl font-extrabold">Examdle staff</h1>
       <p className="mt-1 text-sm text-muted">Reviewers, editors and admins only. Players never need an account.</p>
       <div className="mt-6 space-y-2">
         {oauth.map((p) => (

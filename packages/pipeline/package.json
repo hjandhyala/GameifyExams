@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "bin": {
-    "prepdle-pipeline": "./src/cli.ts"
+    "examdle-pipeline": "./src/cli.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^1.10.0",

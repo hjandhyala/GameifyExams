@@ -3,7 +3,7 @@ import { existsSync, mkdirSync, readFileSync, statSync, writeFileSync } from 'no
 import { join } from 'node:path';
 import { ROOT } from '../ops/assets';
 
-const UA = process.env.PREPDLE_USER_AGENT ?? 'PrepdleContentBot/1.0 (+https://prepdle.app/about; content@prepdle.app)';
+const UA = process.env.EXAMDLE_USER_AGENT ?? 'ExamdleContentBot/1.0 (+https://examdle.com/about; content@examdle.com)';
 const CACHE = join(ROOT, '.cache/http');
 const last = new Map<string, number>();
 

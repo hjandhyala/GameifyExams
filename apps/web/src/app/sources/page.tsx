@@ -7,7 +7,7 @@ export const metadata: Metadata = { title: 'Sources & attributions' };
 export default function SourcesPage() {
   return (
     <PageShell title="Sources & attributions">
-      <p className="text-muted">Prepdle content is original. These open data sources ground our questions and vocabularies (§11 of our design).</p>
+      <p className="text-muted">Examdle content is original. These open data sources ground our questions and vocabularies (§11 of our design).</p>
       <ul className="mt-5 space-y-3">
         {SOURCES.map((s) => (
           <li key={s.id} className="card p-4">

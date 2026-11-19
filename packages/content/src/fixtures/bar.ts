@@ -216,7 +216,7 @@ export const BAR_FIXTURES: FixtureItem[] = [
         { vsEntityId: 'law_embezzlement', point: 'Embezzlement involves lawful possession that is later converted; here the intent existed at the outset.' },
       ],
       blueprintCodes: ['BAR.CRIM.THEFT'],
-      sources: [{ id: 'S1', locator: 'Prepdle Rule Outline: Criminal Law › Theft offenses' }],
+      sources: [{ id: 'S1', locator: 'Examdle Rule Outline: Criminal Law › Theft offenses' }],
     },
   },
   {
@@ -244,7 +244,7 @@ export const BAR_FIXTURES: FixtureItem[] = [
         { vsEntityId: 'law_specific_performance', point: 'Specific performance is a remedy, not the doctrine that makes the promise enforceable.' },
       ],
       blueprintCodes: ['BAR.CONTR.CONSIDERATION'],
-      sources: [{ id: 'S1', locator: 'Prepdle Rule Outline: Contracts › Consideration substitutes' }],
+      sources: [{ id: 'S1', locator: 'Examdle Rule Outline: Contracts › Consideration substitutes' }],
     },
   },
   {
@@ -272,7 +272,7 @@ export const BAR_FIXTURES: FixtureItem[] = [
         { vsEntityId: 'law_respondeat_superior', point: 'Respondeat superior assigns liability to an employer; it does not prove breach.' },
       ],
       blueprintCodes: ['BAR.TORTS.NEGLIGENCE'],
-      sources: [{ id: 'S1', locator: 'Prepdle Rule Outline: Torts › Proving breach' }],
+      sources: [{ id: 'S1', locator: 'Examdle Rule Outline: Torts › Proving breach' }],
     },
   },
 
@@ -334,7 +334,7 @@ export const BAR_FIXTURES: FixtureItem[] = [
       },
       takeaway: 'Battery needs contact, not injury; assault needs apprehension.',
       blueprint: { code: 'BAR.TORTS.INTENTIONAL', name: 'Torts › Intentional torts' },
-      sources: [{ id: 'S1', locator: 'Prepdle Rule Outline: Torts › Intentional torts' }],
+      sources: [{ id: 'S1', locator: 'Examdle Rule Outline: Torts › Intentional torts' }],
     },
   },
   {
@@ -424,7 +424,7 @@ export const BAR_FIXTURES: FixtureItem[] = [
       },
       takeaway: 'Race-notice: subsequent BFP must also record first.',
       blueprint: { code: 'BAR.PROP.RECORDING', name: 'Real Property › Recording acts' },
-      sources: [{ id: 'S1', locator: 'Prepdle Rule Outline: Real Property › Recording statutes' }],
+      sources: [{ id: 'S1', locator: 'Examdle Rule Outline: Real Property › Recording statutes' }],
     },
   },
   {

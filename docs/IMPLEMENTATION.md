@@ -32,7 +32,7 @@ This file maps [`LLD.md`](LLD.md) to the code and lists where the build delibera
 | LLD said | Implemented | Why |
 |---|---|---|
 | pnpm workspaces | npm workspaces | pnpm is not installed here; behavior is equivalent |
-| Docker Postgres or a Neon branch for local dev and tests | **Embedded PGlite** when `DATABASE_URL` is unset (`node_modules/.cache/prepdle-pglite`) | Zero-setup development; tests run real SQL with no Docker. Production uses Postgres via `DATABASE_URL`. |
+| Docker Postgres or a Neon branch for local dev and tests | **Embedded PGlite** when `DATABASE_URL` is unset (`node_modules/.cache/examdle-pglite`) | Zero-setup development; tests run real SQL with no Docker. Production uses Postgres via `DATABASE_URL`. |
 | drizzle-kit generated migrations | Hand-written SQL in `packages/db/src/migrations.ts` with a tiny migrator | Bundles into serverless functions; one source of truth |
 | `items.public` / `items.secret` columns | `items.content` (authored JSON) + `items.game_id` | Authored items are compiled per puzzle. Classify needs `game_id` to tell Anatomy from Verdict. |
 | `/api/admin/*` REST routes | Next.js Server Actions (`app/admin/actions.ts`) | Less code. Same role checks and audit log. |

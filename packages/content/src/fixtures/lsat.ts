@@ -257,7 +257,7 @@ export const LSAT_FIXTURES: FixtureItem[] = [
       },
       takeaway: 'The main conclusion is what the rest of the passage supports, often after "therefore."',
       blueprint: { code: 'LSAT.LR.MAIN', name: 'Logical Reasoning › Main point' },
-      sources: [{ id: 'S1', locator: 'Original item (Prepdle)' }],
+      sources: [{ id: 'S1', locator: 'Original item (Examdle)' }],
     },
   },
   {
@@ -289,7 +289,7 @@ export const LSAT_FIXTURES: FixtureItem[] = [
       },
       takeaway: 'Correlation → causation is the most common LSAT flaw.',
       blueprint: { code: 'LSAT.LR.FLAW', name: 'Logical Reasoning › Flaw' },
-      sources: [{ id: 'S1', locator: 'Original item (Prepdle)' }],
+      sources: [{ id: 'S1', locator: 'Original item (Examdle)' }],
     },
   },
   {
@@ -321,7 +321,7 @@ export const LSAT_FIXTURES: FixtureItem[] = [
       },
       takeaway: 'Necessary assumption: negate the answer; the right one wrecks the argument.',
       blueprint: { code: 'LSAT.LR.NA', name: 'Logical Reasoning › Necessary assumption' },
-      sources: [{ id: 'S1', locator: 'Original item (Prepdle)' }],
+      sources: [{ id: 'S1', locator: 'Original item (Examdle)' }],
     },
   },
   {
@@ -353,7 +353,7 @@ export const LSAT_FIXTURES: FixtureItem[] = [
       },
       takeaway: 'Weaken a causal claim with an alternative cause or reverse causation.',
       blueprint: { code: 'LSAT.LR.WKN', name: 'Logical Reasoning › Weaken' },
-      sources: [{ id: 'S1', locator: 'Original item (Prepdle)' }],
+      sources: [{ id: 'S1', locator: 'Original item (Examdle)' }],
     },
   },
   {
@@ -385,7 +385,7 @@ export const LSAT_FIXTURES: FixtureItem[] = [
       },
       takeaway: 'Watch for "reported" vs actual rates: a classic paradox resolution.',
       blueprint: { code: 'LSAT.LR.PARADOX', name: 'Logical Reasoning › Resolve the paradox' },
-      sources: [{ id: 'S1', locator: 'Original item (Prepdle)' }],
+      sources: [{ id: 'S1', locator: 'Original item (Examdle)' }],
     },
   },
   {
@@ -417,7 +417,7 @@ export const LSAT_FIXTURES: FixtureItem[] = [
       },
       takeaway: 'Sufficient assumption: bridge the gap so the conclusion must follow.',
       blueprint: { code: 'LSAT.LR.SA', name: 'Logical Reasoning › Sufficient assumption' },
-      sources: [{ id: 'S1', locator: 'Original item (Prepdle)' }],
+      sources: [{ id: 'S1', locator: 'Original item (Examdle)' }],
     },
   },
 ];

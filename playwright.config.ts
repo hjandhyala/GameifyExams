@@ -29,10 +29,10 @@ export default defineConfig({
   webServer: process.env.E2E_BASE_URL
     ? undefined
     : {
-        command: `rm -rf node_modules/.cache/prepdle-e2e-pglite && npm run dev -w @prepdle/web -- -p ${PORT}`,
+        command: `rm -rf node_modules/.cache/examdle-e2e-pglite && npm run dev -w @prepdle/web -- -p ${PORT}`,
         url: `http://localhost:${PORT}/api/health`,
         reuseExistingServer: !process.env.CI,
         timeout: 180_000,
-        env: { PGLITE_DIR: '../../node_modules/.cache/prepdle-e2e-pglite', DEV_ALLOW_ANY_DATE: '1', LAUNCH_DATE: '2026-07-15' },
+        env: { PGLITE_DIR: '../../node_modules/.cache/examdle-e2e-pglite', DEV_ALLOW_ANY_DATE: '1', LAUNCH_DATE: '2026-07-15' },
       },
 });

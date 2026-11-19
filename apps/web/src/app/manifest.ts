@@ -2,8 +2,8 @@ import type { MetadataRoute } from 'next';
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Prepdle: daily exam-prep games',
-    short_name: 'Prepdle',
+    name: 'Examdle: daily exam-prep games',
+    short_name: 'Examdle',
     description: 'Daily puzzles for MCAT, LSAT, USMLE and the bar exam.',
     start_url: '/?source=pwa',
     display: 'standalone',

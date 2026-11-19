@@ -7,7 +7,7 @@ export default function PrivacyPage() {
   return (
     <PageShell title="Privacy">
       <div className="prose-game space-y-4 text-[16px]">
-        <p>Prepdle has no accounts. We don’t collect names, emails or advertising identifiers.</p>
+        <p>Examdle has no accounts. We don’t collect names, emails or advertising identifiers.</p>
         <h2 className="text-xl font-bold">What we store</h2>
         <ul className="list-disc space-y-2 pl-5">
           <li>
@@ -33,7 +33,7 @@ export default function PrivacyPage() {
         </ul>
         <h2 className="text-xl font-bold">Your choices</h2>
         <p>
-          Settings → “Delete all my data” removes local data and all server data for this device. Prepdle is not directed to children under 13.
+          Settings → “Delete all my data” removes local data and all server data for this device. Examdle is not directed to children under 13.
         </p>
       </div>
     </PageShell>

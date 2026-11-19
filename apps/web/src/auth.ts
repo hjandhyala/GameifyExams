@@ -11,7 +11,7 @@ declare module 'next-auth' {
   }
 }
 
-const IS_PROD = process.env.VERCEL_ENV === 'production' || process.env.PREPDLE_PRODUCTION === '1';
+const IS_PROD = process.env.VERCEL_ENV === 'production' || process.env.EXAMDLE_PRODUCTION === '1';
 const bootstrapAdmins = (process.env.ADMIN_EMAILS ?? '').split(',').map((s) => s.trim().toLowerCase()).filter(Boolean);
 
 const providers: Provider[] = [];

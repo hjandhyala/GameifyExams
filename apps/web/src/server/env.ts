@@ -3,7 +3,7 @@ import { isISODate } from '@prepdle/core';
 
 const bool = (v: string | undefined) => v === '1' || v === 'true';
 
-export const IS_PROD_DEPLOY = process.env.VERCEL_ENV === 'production' || bool(process.env.PREPDLE_PRODUCTION);
+export const IS_PROD_DEPLOY = process.env.VERCEL_ENV === 'production' || bool(process.env.EXAMDLE_PRODUCTION);
 
 /** Fixtures + date override are only ever enabled outside production deploys (§18.1). */
 export const DEV_FEATURES = !IS_PROD_DEPLOY && (process.env.NODE_ENV !== 'production' || bool(process.env.FIXTURES));

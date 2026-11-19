@@ -24,7 +24,7 @@ export default async function AdminLayout({ children }: { children: ReactNode })
       <header className="border-b border-border bg-surface">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-x-4 gap-y-1 px-4 py-2">
           <Link href="/admin" className="font-extrabold">
-            Prepdle admin
+            Examdle admin
           </Link>
           <nav className="flex flex-wrap gap-3 text-sm">
             {NAV.map(([href, label]) => (

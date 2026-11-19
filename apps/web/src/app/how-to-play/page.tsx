@@ -33,7 +33,7 @@ export default function HowToPlayPage() {
             <li>Daily streak: finish at least one game on consecutive days (win or lose).</li>
             <li>Track streak: the same, per exam.</li>
             <li>Win streaks: consecutive days passing a specific game.</li>
-            <li>Add Prepdle to your home screen to keep your streak safe, or use Settings → Move to another device.</li>
+            <li>Add Examdle to your home screen to keep your streak safe, or use Settings → Move to another device.</li>
           </ul>
         </section>
       </div>

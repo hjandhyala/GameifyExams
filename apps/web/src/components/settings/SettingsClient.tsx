@@ -59,17 +59,17 @@ export function SettingsClient({ version }: { version: string }) {
   };
   const exportData = () => {
     const s = useStore.getState();
-    const blob = new Blob([JSON.stringify({ app: 'prepdle', version: 1, exportedAt: new Date().toISOString(), settings: s.settings, history: s.history }, null, 2)], { type: 'application/json' });
+    const blob = new Blob([JSON.stringify({ app: 'examdle', version: 1, exportedAt: new Date().toISOString(), settings: s.settings, history: s.history }, null, 2)], { type: 'application/json' });
     const a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
-    a.download = `prepdle-data-${new Date().toISOString().slice(0, 10).replaceAll('-', '')}.json`;
+    a.download = `examdle-data-${new Date().toISOString().slice(0, 10).replaceAll('-', '')}.json`;
     a.click();
     URL.revokeObjectURL(a.href);
   };
   const importData = async (f: File) => {
     try {
       const data = JSON.parse(await f.text()) as { app?: string; settings?: Partial<Settings>; history?: HistoryRecord[] };
-      if (data.app !== 'prepdle' || !Array.isArray(data.history)) throw new Error('Not a Prepdle export');
+      if (data.app !== 'examdle' || !Array.isArray(data.history)) throw new Error('Not a Examdle export');
       const valid = data.history.filter((h) => typeof h.d === 'string' && typeof h.t === 'string' && typeof h.g === 'string');
       recomputeStreaks(valid);
       useStore.getState().importData({ settings: data.settings, history: valid });
@@ -142,7 +142,7 @@ export function SettingsClient({ version }: { version: string }) {
           Export
         </button>
       </Row>
-      <Row title="Import data" desc="Merge a Prepdle export into this device">
+      <Row title="Import data" desc="Merge a Examdle export into this device">
         <label className="btn cursor-pointer">
           Import
           <input type="file" accept="application/json" className="sr-only" onChange={(e) => e.target.files?.[0] && void importData(e.target.files[0])} />
@@ -159,7 +159,7 @@ export function SettingsClient({ version }: { version: string }) {
         </div>
       </div>
       <p className="mt-6 text-center text-sm text-muted">
-        Prepdle v{version} · <Link className="underline" href="/privacy">Privacy</Link> · <Link className="underline" href="/sources">Sources</Link>
+        Examdle v{version} · <Link className="underline" href="/privacy">Privacy</Link> · <Link className="underline" href="/sources">Sources</Link>
       </p>
     </div>
   );

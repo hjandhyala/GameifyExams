@@ -1,5 +1,5 @@
 {
-  "note": "Adult reference ranges (conventional units). Authored by Prepdle editors; ranges vary by laboratory.",
+  "note": "Adult reference ranges (conventional units). Authored by Examdle editors; ranges vary by laboratory.",
   "sections": [
     { "name": "Serum chemistry", "rows": [
       ["Sodium", "136–145 mEq/L"], ["Potassium", "3.5–5.0 mEq/L"], ["Chloride", "95–105 mEq/L"], ["Bicarbonate", "22–28 mEq/L"],

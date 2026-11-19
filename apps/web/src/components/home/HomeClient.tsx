@@ -37,7 +37,7 @@ export function HomeClient({ tracks }: { tracks: TrackSummary[] }) {
 
   return (
     <>
-      <AppHeader title={<span className="tracking-tight">PREPDLE</span>} />
+      <AppHeader title={<span className="tracking-tight">EXAMDLE</span>} />
       <main id="main" className="mx-auto max-w-5xl px-4 pb-16 pt-5">
         <div className="flex items-center justify-between">
           <p className="text-sm text-muted">

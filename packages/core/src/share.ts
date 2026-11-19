@@ -2,8 +2,8 @@ import { CATALOG } from './catalog';
 import { shortDateLabel } from './date';
 import type { GameId, ISODate, TrackId } from './types';
 
-export const SHARE_DOMAIN = 'prepdle.app';
-export const BRAND = 'Prepdle';
+export const SHARE_DOMAIN = 'examdle.com';
+export const BRAND = 'Examdle';
 
 export function buildGameShare(p: {
   track: TrackId;

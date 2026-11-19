@@ -227,7 +227,7 @@ export const BOARDS_FIXTURES: FixtureItem[] = [
         { vsEntityId: 'dx_histoplasmosis', point: 'Histoplasmosis follows Ohio/Mississippi River valley exposure (bird or bat droppings).' },
       ],
       blueprintCodes: ['BOARDS.RESP.ILD', 'BOARDS.MULTI.GRANULOMATOUS'],
-      sources: [{ id: 'S1', locator: 'OpenStax Anatomy & Physiology 2e (respiratory system); Prepdle editorial review' }],
+      sources: [{ id: 'S1', locator: 'OpenStax Anatomy & Physiology 2e (respiratory system); Examdle editorial review' }],
     },
   },
   {
@@ -264,7 +264,7 @@ export const BOARDS_FIXTURES: FixtureItem[] = [
         { vsEntityId: 'dx_acute_pancreatitis', point: 'Pancreatitis causes pain and vomiting but not ketoacidosis with marked hyperglycemia.' },
       ],
       blueprintCodes: ['BOARDS.ENDO.DIABETES'],
-      sources: [{ id: 'S1', locator: 'Prepdle editorial review (endocrine emergencies)' }],
+      sources: [{ id: 'S1', locator: 'Examdle editorial review (endocrine emergencies)' }],
     },
   },
   {
@@ -292,7 +292,7 @@ export const BOARDS_FIXTURES: FixtureItem[] = [
         { vsEntityId: 'dx_multiple_sclerosis', point: 'MS produces CNS lesions separated in time and space, often with sensory findings and hyperreflexia.' },
       ],
       blueprintCodes: ['BOARDS.NEURO.NMJ', 'BOARDS.GEN.IMMUNO'],
-      sources: [{ id: 'S1', locator: 'Prepdle editorial review (neuromuscular junction disorders)' }],
+      sources: [{ id: 'S1', locator: 'Examdle editorial review (neuromuscular junction disorders)' }],
     },
   },
 
@@ -364,7 +364,7 @@ export const BOARDS_FIXTURES: FixtureItem[] = [
       },
       takeaway: 'Hypercalcemia + high PTH + hypercalciuria = primary hyperparathyroidism (adenoma).',
       blueprint: { code: 'BOARDS.ENDO.PARATHYROID', name: 'Endocrine › Calcium & parathyroid' },
-      sources: [{ id: 'S1', locator: 'Prepdle editorial review (calcium homeostasis)' }],
+      sources: [{ id: 'S1', locator: 'Examdle editorial review (calcium homeostasis)' }],
     },
   },
   {
@@ -396,7 +396,7 @@ export const BOARDS_FIXTURES: FixtureItem[] = [
       },
       takeaway: 'Nephritis ~2 weeks after strep pharyngitis → low C3, subepithelial humps.',
       blueprint: { code: 'BOARDS.RENAL.GN', name: 'Renal › Glomerular disease' },
-      sources: [{ id: 'S1', locator: 'Prepdle editorial review (glomerular disease)' }],
+      sources: [{ id: 'S1', locator: 'Examdle editorial review (glomerular disease)' }],
     },
   },
   {
@@ -460,7 +460,7 @@ export const BOARDS_FIXTURES: FixtureItem[] = [
       },
       takeaway: 'Low prevalence drags PPV down even with good sensitivity and specificity.',
       blueprint: { code: 'BOARDS.BIOSTAT.TESTS', name: 'Biostatistics › Diagnostic tests' },
-      sources: [{ id: 'S1', locator: 'Prepdle editorial review (test characteristics)' }],
+      sources: [{ id: 'S1', locator: 'Examdle editorial review (test characteristics)' }],
     },
   },
   {
@@ -492,7 +492,7 @@ export const BOARDS_FIXTURES: FixtureItem[] = [
       },
       takeaway: 'Severe fasting hypoglycemia + lactic acidosis + hyperuricemia = Von Gierke.',
       blueprint: { code: 'BOARDS.GEN.BIOCHEM.GSD', name: 'Biochemistry › Glycogen storage diseases' },
-      sources: [{ id: 'S1', locator: 'Prepdle editorial review (glycogen metabolism)' }],
+      sources: [{ id: 'S1', locator: 'Examdle editorial review (glycogen metabolism)' }],
     },
   },
 ];

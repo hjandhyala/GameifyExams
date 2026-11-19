@@ -79,7 +79,7 @@ function Boot() {
       )}
       {newer && (
         <div role="status" className="bg-present/20 px-4 py-2 text-center text-sm">
-          A newer version of Prepdle saved data here. Please refresh.
+          A newer version of Examdle saved data here. Please refresh.
         </div>
       )}
     </>

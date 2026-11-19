@@ -1,4 +1,4 @@
-# GameifyExams · Prepdle
+# GameifyExams · Examdle
 
 Daily, shareable puzzle games for standardized-exam prep: **MCAT · LSAT · USMLE Boards · Bar**.
 One puzzle per game per day, the same for everyone, no account needed. The design is in [`docs/LLD.md`](docs/LLD.md). [`docs/IMPLEMENTATION.md`](docs/IMPLEMENTATION.md) maps the LLD to the code and lists deviations.

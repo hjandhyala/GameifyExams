@@ -3,8 +3,8 @@ import { zodOutputFormat } from '@anthropic-ai/sdk/helpers/zod';
 import type { z } from 'zod';
 
 /** Pipeline LLM defaults (§12.5). The model id is pinned; change it deliberately with a golden-set run. */
-export const MODEL = process.env.PREPDLE_MODEL ?? 'claude-opus-5-5';
-export const SECOND_SOLVER_MODEL = process.env.PREPDLE_SOLVER_MODEL ?? 'claude-sonnet-5-5';
+export const MODEL = process.env.EXAMDLE_MODEL ?? 'claude-opus-5-5';
+export const SECOND_SOLVER_MODEL = process.env.EXAMDLE_SOLVER_MODEL ?? 'claude-sonnet-5-5';
 
 /** $ per million tokens (standard API); batch is 50% of these. */
 const PRICES: Record<string, { in: number; out: number; cacheRead: number }> = {

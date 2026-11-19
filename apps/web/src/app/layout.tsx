@@ -8,10 +8,10 @@ import '@/styles/globals.css';
 const inter = Inter({ subsets: ['latin', 'greek'], display: 'swap', variable: '--font-inter' });
 
 export const metadata: Metadata = {
-  title: { default: 'Prepdle: daily exam-prep games', template: '%s · Prepdle' },
+  title: { default: 'Examdle: daily exam-prep games', template: '%s · Examdle' },
   description: 'Daily, shareable puzzle games for MCAT, LSAT, USMLE boards and the bar exam. No account needed.',
-  applicationName: 'Prepdle',
-  appleWebApp: { capable: true, title: 'Prepdle', statusBarStyle: 'default' },
+  applicationName: 'Examdle',
+  appleWebApp: { capable: true, title: 'Examdle', statusBarStyle: 'default' },
   icons: { icon: '/icons/icon.svg', apple: '/icons/apple-touch-icon.png' },
   formatDetection: { telephone: false },
 };

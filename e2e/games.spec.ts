@@ -49,7 +49,7 @@ test('quartet: one-away then solve, share, reload restores', async ({ page, requ
   await page.getByRole('button', { name: /Share/ }).first().click();
   const clip = await page.evaluate(() => navigator.clipboard.readText().catch(() => ''));
   if (clip) {
-    expect(clip).toMatch(/^Prepdle · Boards Quartet #\d+ · ✅ 1 mistake/);
+    expect(clip).toMatch(/^Examdle · Boards Quartet #\d+ · ✅ 1 mistake/);
     for (const g of groups) for (const t of g.tiles) expect(clip).not.toContain(t);
   }
   await page.reload();
@@ -157,7 +157,7 @@ test('streak and daily card after playing; stats page', async ({ page, request }
   await page.getByRole('button', { name: /Share today’s card/ }).click();
   const clip = await page.evaluate(() => navigator.clipboard.readText().catch(() => ''));
   if (clip) {
-    expect(clip.split('\n')[0]).toMatch(/^Prepdle LSAT · \w{3} \w{3} \d+ · #\d+$/);
+    expect(clip.split('\n')[0]).toMatch(/^Examdle LSAT · \w{3} \w{3} \d+ · #\d+$/);
     expect(clip).toContain('⚖️ Verdict   1/3');
     expect(clip).toContain('🔥 1-day streak');
   }

@@ -1,4 +1,4 @@
-# Prepdle: Low-Level Design (LLD)
+# Examdle: Low-Level Design (LLD)
 
 > **Daily, shareable, Wordle-style games for standardized-exam prep: MCAT · LSAT · Medical Boards · Bar**
 
@@ -8,7 +8,7 @@
 | **Status** | Draft v1.0, ready for implementation review |
 | **Date** | 2026-11-18 |
 | **Repo** | `GameifyExams` |
-| **Working product name** | **Prepdle** (placeholder; run trademark and domain checks before launch. `prepdle.app` is used as a placeholder domain throughout.) |
+| **Working product name** | **Examdle** (placeholder; run trademark and domain checks before launch. `examdle.com` is used as a placeholder domain throughout.) |
 | **Audience** | Engineers implementing the system, content leads, reviewers |
 
 ---
@@ -44,7 +44,7 @@
 
 ### 1.1 Problem
 
-Standardized-exam prep is long, solitary and hard to keep up every day. Daily puzzle games (Wordle, grouping games, daily-diagnosis games) build streaks and social sharing, but they are trivia-grade. Prepdle combines the two. A few minutes of daily play, built to the standard of the real exams, with streaks and spoiler-free sharing.
+Standardized-exam prep is long, solitary and hard to keep up every day. Daily puzzle games (Wordle, grouping games, daily-diagnosis games) build streaks and social sharing, but they are trivia-grade. Examdle combines the two. A few minutes of daily play, built to the standard of the real exams, with streaks and spoiler-free sharing.
 
 ### 1.2 Goals
 
@@ -357,13 +357,13 @@ Completion (not a pass) drives the headline streak. This rewards showing up, whi
 - **Daily Card format:**
 
 ```
-Prepdle Boards · Wed Nov 18 · #127
+Examdle Boards · Wed Nov 18 · #127
 🧩 Quartet   ✅ 1 mistake
 🔤 Jargon    4/6
 🩺 Workup    3/6
 ⚡ Gauntlet  4/5 · 11 pts
 🔥 12-day streak
-prepdle.app/boards
+examdle.com/boards
 ```
 
 - Phase 2: a generated share image (OG-style PNG via `next/og`) for Instagram and iMessage previews.
@@ -494,7 +494,7 @@ Each group has a tier from 1 (most direct) to 4 (subtlest). Tier is shown by col
 | 3 | Requires discrimination | `--tier-3` (orange) | 🟠 | ▲ |
 | 4 | Subtle, multi-step or "trap" group | `--tier-4` (red) | 🔴 | ★ |
 
-> Circles in the share grid and an original palette keep Prepdle visually distinct from existing grouping games.
+> Circles in the share grid and an original palette keep Examdle visually distinct from existing grouping games.
 
 #### 5.1.3 Payloads
 
@@ -598,14 +598,14 @@ function evaluateQuartet(pub, sec, transcript): EvaluationResult {
 #### 5.1.7 Share
 
 ```
-Prepdle · Boards Quartet #127
+Examdle · Boards Quartet #127
 🟢🟢🟢🟢
 🔴🔵🔴🔴
 🔵🔵🔵🔵
 🟠🟠🟠🟠
 🔴🔴🔴🔴
 ✅ 1 mistake · 🔥12
-prepdle.app/boards
+examdle.com/boards
 ```
 One row per guess, with each emoji showing the true tier of the selected tile. Rows are in guess order and tiles within a row in selection order. A loss shows `❌ 3/4 groups`.
 
@@ -743,13 +743,13 @@ Server-side checks per move:
 #### 5.2.6 Share
 
 ```
-Prepdle · Bar Jargon #127 · 4/6*
+Examdle · Bar Jargon #127 · 4/6*
 ⚫🟡⚫⚫⚫🟢
 🟢⚫🟡⚫⚫🟢
 🟢🟢⚫🟢🟢🟢
 🟢🟢🟢🟢🟢🟢
 💡1 · Bonus ✅ · 🔥5
-prepdle.app/bar
+examdle.com/bar
 ```
 `*` means hard mode. Absent is shown as ⚫ when the sharer uses the dark theme and ⚪ in the light theme. In high-contrast mode, correct is 🟠 and present is 🔵.
 
@@ -901,9 +901,9 @@ for (let i = 0; i < transcript.length; i++) {
 #### 5.3.7 Share
 
 ```
-Prepdle · Boards Workup #127 · Dx 3/6
+Examdle · Boards Workup #127 · Dx 3/6
 🔴🟡🟢⚪⚪⚪
-🔥12 · prepdle.app/boards
+🔥12 · examdle.com/boards
 ```
 Legend: 🔴 wrong · 🟡 close · ⚫ skip · 🟢 correct · ⚪ unused clue. A loss shows `Dx X/6`.
 
@@ -1060,11 +1060,11 @@ interface GauntletOutcome { correct: number; points: number; perQuestion: { corr
 #### 5.4.8 Share
 
 ```
-Prepdle · MCAT Gauntlet #127 · 4/5 · 11 pts
+Examdle · MCAT Gauntlet #127 · 4/5 · 11 pts
 🟢🟢🔴🟢🟢
 3️⃣2️⃣1️⃣3️⃣2️⃣
 ⏱ on pace · 🔥7
-prepdle.app/mcat
+examdle.com/mcat
 ```
 The second line shows the confidence for each question. "on pace" appears if the average time ≤ the target. Timed mode appends ⏱*.
 
@@ -1213,13 +1213,13 @@ Anatomy renders the argument as a paragraph with each segment as a tappable high
 #### 5.5.5 Share
 
 ```
-Prepdle · LSAT Anatomy #127 · 2/3
+Examdle · LSAT Anatomy #127 · 2/3
 🟢🔴🟢🟢🔴
 🟢🟢🟢🟢🟢
-🔥4 · prepdle.app/lsat
+🔥4 · examdle.com/lsat
 ```
 ```
-Prepdle · LSAT Verdict #127 · 3/3
+Examdle · LSAT Verdict #127 · 3/3
 🟢🟢🟢⚪⚪⚪  3/6
 🟢🟢🟢🟢🟢⚪  5/6
 🟢🟢🟢🟢🟢🟢  6/6
@@ -1342,7 +1342,7 @@ All text/background pairs must meet WCAG 2.2 AA (4.5:1 body text, 3:1 large text
 ```
 Mobile                                      Desktop (≥1024)
 ┌──────────────────────────────┐            ┌────────────────────────────────────────────────────┐
-│ PREPDLE            📊  ⚙      │            │ PREPDLE                                 📊  ⚙       │
+│ EXAMDLE            📊  ⚙      │            │ EXAMDLE                                 📊  ⚙       │
 │ Wed, Nov 18 · #127   🔥 12    │            │ Wed, Nov 18 · #127                      🔥 12-day    │
 │                              │            │                                                    │
 │ Pick your exam               │            │ ┌────────┐ ┌────────┐ ┌────────┐ ┌────────┐         │
@@ -1495,14 +1495,14 @@ Under `prefers-reduced-motion: reduce` (or the setting), all motion becomes inst
 - Axe checks run in CI for each route (§17.4).
 
 ### 6.9 PWA
-- `app/manifest.ts`: name, short_name "Prepdle", `display: standalone`, theme/background colors per theme, icons 192/512 plus maskable, `start_url: "/?source=pwa"`.
+- `app/manifest.ts`: name, short_name "Examdle", `display: standalone`, theme/background colors per theme, icons 192/512 plus maskable, `start_url: "/?source=pwa"`.
 - iOS: `apple-touch-icon`, `apple-mobile-web-app-capable`, status-bar style.
 - Service worker (Serwist):
   - precache the app shell, fonts and engine chunks;
   - runtime cache for `/dict/*` and `/vocab/*` (immutable, cache-first);
   - network-first for puzzle JSON, falling back to cache (an in-progress game can load offline, but moves need the network);
   - no caching of `/api/*/evaluate` or `/results`.
-- Install prompt: after the **3rd** completed day, a subtle banner "Add Prepdle to your Home Screen to keep your streak safe". On iOS it shows instructions, because home-screen web apps keep their own storage and are exempt from Safari's 7-day script-storage deletion.
+- Install prompt: after the **3rd** completed day, a subtle banner "Add Examdle to your Home Screen to keep your streak safe". On iOS it shows instructions, because home-screen web apps keep their own storage and are exempt from Safari's 7-day script-storage deletion.
 - Phase 2: Web Push daily reminder (opt-in; iOS 16.4+ supports push only for home-screen web apps).
 
 ### 6.10 Voice & Copy
@@ -1768,7 +1768,7 @@ type Outbox = { id: string; body: ResultSubmission; attempts: number; nextAt: nu
 - **Persistence request:** call `navigator.storage.persist()` after the first completed game.
 - **Multi-tab:**
   - a `storage` event listener re-hydrates the store when another tab writes;
-  - a `BroadcastChannel('prepdle')` lock means that if two tabs open the same in-progress game, the second shows "This game is open in another tab" with a "Play here instead" button that takes the lock.
+  - a `BroadcastChannel('examdle')` lock means that if two tabs open the same in-progress game, the second shows "This game is open in another tab" with a "Play here instead" button that takes the lock.
 
 ### 8.4 Date Utilities (`packages/core/src/date.ts`)
 
@@ -1830,11 +1830,11 @@ Rules and edge cases:
 ### 8.8 Restore & Device Transfer (no login)
 - **Automatic restore:** on boot, if local history is empty (or `meta.createdAt` is newer than the cookie's issue date, which the server returns via `/me/summary`), call `GET /api/v1/me/history`. Merge, recompute streaks and toast "Welcome back. We restored your streak."
 - **Transfer to another device** (Settings → "Move to another device"):
-  1. The old device calls `POST /api/v1/me/transfer-codes` and receives `{code: "K7Q-M2X-9PA", expiresAt}` (TTL 15 min, single use, about 40 bits of entropy). It is shown as text and a QR code linking to `https://prepdle.app/transfer#K7QM2X9PA`.
+  1. The old device calls `POST /api/v1/me/transfer-codes` and receives `{code: "K7Q-M2X-9PA", expiresAt}` (TTL 15 min, single use, about 40 bits of entropy). It is shown as text and a QR code linking to `https://examdle.com/transfer#K7QM2X9PA`.
   2. The new device opens the link or enters the code: `POST /api/v1/me/transfer-codes/redeem {code}`. The server sets the new device's `pd_did` cookie to the **old device ID**. Both devices then share one identity.
   3. The new device fetches `/me/history`, merges and recomputes.
   - Rate limits: 5 code creations per hour per device and 10 redeem attempts per hour per IP. Codes are stored only as hashes.
-- **Export/import JSON** (Settings): a download of `prepdle-data-YYYYMMDD.json` (settings + history), and import with schema validation and merge.
+- **Export/import JSON** (Settings): a download of `examdle-data-YYYYMMDD.json` (settings + history), and import with schema validation and merge.
 
 ### 8.9 Puzzle Versions Mid-Game
 - `PublicPuzzle.version` is stored in the save. `evaluate` is called with `{version}`. The server evaluates against **that** version (all versions are retained) unless it is **voided**.
@@ -1847,7 +1847,7 @@ Rules and edge cases:
 buildGameShare({ track, game, number, engineShareLines, scoreLabel, streak, theme, highContrast }): string
 buildDailyCard({ track, date, number, games: {game, scoreLabel}[], streak }): string
 ```
-- The header uses the track short name and game display name. The footer is `prepdle.app/{track}`, plus `?s=1` for share attribution in analytics (no personal data).
+- The header uses the track short name and game display name. The footer is `examdle.com/{track}`, plus `?s=1` for share attribution in analytics (no personal data).
 - Emoji sets depend on `theme` and `highContrast` (§5.2.6).
 - Snapshot-tested for every engine × outcome type.
 
@@ -2380,7 +2380,7 @@ Execution environment: GitHub Actions workflows (`content-weekly.yml`, `content-
 
 ### 12.3 Ingestion Jobs
 
-All fetchers share one HTTP client with a token-bucket rate limiter per host, honor `Retry-After` and 429 responses, set a descriptive `User-Agent` ("PrepdleContentBot/1.0 (+contact email)"), cache responses on disk keyed by URL hash (`.cache/http/`, TTL per source) and write provenance (`source_id`, URL, retrieval time, license).
+All fetchers share one HTTP client with a token-bucket rate limiter per host, honor `Retry-After` and 429 responses, set a descriptive `User-Agent` ("ExamdleContentBot/1.0 (+contact email)"), cache responses on disk keyed by URL hash (`.cache/http/`, TTL per source) and write provenance (`source_id`, URL, retrieval time, license).
 
 | Job | Steps |
 |---|---|
@@ -2729,7 +2729,7 @@ Cross-Origin-Opener-Policy: same-origin
 - **Cookie classification:** `pd_did` is strictly necessary for the requested service (one-per-day games, streak continuity), so no consent banner is needed in most regimes. Analytics is cookieless. The privacy page discloses both. *(Have counsel confirm for EU/UK traffic: open question Q8.)*
 
 ### 14.4 Legal & Content Compliance
-- **Non-affiliation and trademarks** (footer and `/about`): "Prepdle is not affiliated with or endorsed by the AAMC, LSAC, FSMB, NBME or NCBE. MCAT® is a registered trademark of the AAMC. LSAT® is a registered trademark of LSAC. USMLE® is a registered trademark of FSMB and NBME. MBE®, UBE® and NextGen are marks of NCBE." Exam names are used only nominatively, to describe what the content prepares for.
+- **Non-affiliation and trademarks** (footer and `/about`): "Examdle is not affiliated with or endorsed by the AAMC, LSAC, FSMB, NBME or NCBE. MCAT® is a registered trademark of the AAMC. LSAT® is a registered trademark of LSAC. USMLE® is a registered trademark of FSMB and NBME. MBE®, UBE® and NextGen are marks of NCBE." Exam names are used only nominatively, to describe what the content prepares for.
 - **Educational use only:** "Not medical advice. Not legal advice." This appears in the footer, the result sheet (Boards and Bar), and `/about`.
 - **Originality of games:** game names, art, colors and share emoji vocabulary are original (circles, tier palette, own names). Do not use "Wordle", "Connections" or "Doctordle" names, layouts, colors or copy anywhere in the product.
 - **Content licensing:** every `SourceRef` links to `kb.sources`. CC BY sources require attribution, which `/sources` provides automatically. HPO terms require an acknowledgement and version on the sources page. HPO data is never displayed. openFDA has a credit line. Respect source-specific terms (e.g. the RxNav rule against using the NLM name to imply endorsement).
@@ -2893,8 +2893,8 @@ Pass criteria: evaluate p95 < 300 ms, error rate < 0.1%, DB CPU < 60%.
 |---|---|---|---|
 | Local | `localhost:3000` | Docker Postgres 16 + Redis (`docker compose up`), or a personal Neon branch | Fixtures plus a seeded sample bank (`pnpm db:seed`) |
 | Preview (per PR) | Vercel preview URL | Neon branch created by the GitHub Action, seeded with fixtures | Fixtures. `FIXTURES=1`. `?__date=YYYY-MM-DD` override allowed. |
-| Staging | `staging.prepdle.app` | Neon `staging` branch (copy of prod content, synthetic results) | Real scheduled content (review dry-runs) |
-| Production | `prepdle.app` | Neon `main` | Live |
+| Staging | `staging.examdle.com` | Neon `staging` branch (copy of prod content, synthetic results) | Real scheduled content (review dry-runs) |
+| Production | `examdle.com` | Neon `main` | Live |
 
 > The `__date` override and fixtures are compiled out of production (`process.env.VERCEL_ENV !== 'production'` guard, plus a unit test asserting the guard).
 
@@ -3031,7 +3031,7 @@ Phase 1 uses an **in-memory API** implementing §9 over fixtures (`FIXTURES=1`),
 | Q1 | "Only 1 a day" means one play **per game** per day (default) or **one game total** per day? | `per_game` (configurable) |
 | Q2 | "Board exams" scope: USMLE only, or also COMLEX, NCLEX, specialty boards (ABIM…)? | USMLE Step 1 + 2 CK |
 | Q3 | Bar focus: legacy MBE subjects, NextGen, or a state-specific exam (e.g. California)? | MBE subjects + NextGen foundational concepts |
-| Q4 | Product name and domain ("Prepdle" is a placeholder) | Placeholder until trademark check |
+| Q4 | Product name and domain ("Examdle" is a placeholder) | Placeholder until trademark check |
 | Q5 | Reviewer budget and sourcing (paid per item vs. volunteer) | Paid per item, ~3 h/day total |
 | Q6 | Hosting preference (Vercel + Neon + Upstash assumed) | As designed |
 | Q7 | Legal sign-off on the source registry and on any benchmark-dataset use for internal calibration | Exclude benchmark datasets entirely |
@@ -3129,13 +3129,13 @@ export const CATALOG = {
 
 | Game | Header | Grid legend | Footer |
 |---|---|---|---|
-| Quartet | `Prepdle · {Track} Quartet #{n}` | 🟢🔵🟠🔴 per tile = true tier | `✅ {k} mistake(s)` or `❌ {s}/4 groups` · `🔥{streak}` |
+| Quartet | `Examdle · {Track} Quartet #{n}` | 🟢🔵🟠🔴 per tile = true tier | `✅ {k} mistake(s)` or `❌ {s}/4 groups` · `🔥{streak}` |
 | Jargon | `… Jargon #{n} · {g}/6[*]` | 🟢 correct 🟡 present ⚫/⚪ absent (HC: 🟠/🔵) | `💡{h} · Bonus ✅/❌ · 🔥` |
 | Workup/Specimen/Doctrine | `… {Name} #{n} · {Dx|ID} {k}/6` | 🔴 wrong 🟡 close ⚫ skip 🟢 correct ⚪ unused | `🔥` |
 | Gauntlet | `… Gauntlet #{n} · {c}/5 · {pts} pts` | 🟢/🔴 per Q; line 2 = confidence keycaps 1️⃣2️⃣3️⃣ | `⏱ on pace` (if), `🔥` |
 | Anatomy | `… Anatomy #{n} · {k}/3` | per check row: 🟢/🔴 per segment | `🔥` |
 | Verdict | `… Verdict #{n} · {k}/3` | per check row: greens-first + `{c}/6` | `🔥` |
-| Daily Card | `Prepdle {Track} · {Dow Mon D} · #{n}` | one line per game with icon + score | `🔥 {n}-day streak` + URL |
+| Daily Card | `Examdle {Track} · {Dow Mon D} · #{n}` | one line per game with icon + score | `🔥 {n}-day streak` + URL |
 
 ### Appendix E: References (research for this LLD, November 2026)
 

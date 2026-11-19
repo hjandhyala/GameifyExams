@@ -2,7 +2,7 @@
 export const MIGRATIONS: { id: string; sql: string }[] = [
   {
     id: '0001_init',
-    sql: `-- Prepdle initial schema (LLD §10.2, §11.5)
+    sql: `-- Examdle initial schema (LLD §10.2, §11.5)
 CREATE TYPE track_id AS ENUM ('mcat','lsat','boards','bar');
 CREATE TYPE engine_id AS ENUM ('quartet','jargon','workup','gauntlet','classify');
 CREATE TYPE item_status AS ENUM ('draft','auto_rejected','in_review','changes_requested','approved','reserve','scheduled','published','retired');
