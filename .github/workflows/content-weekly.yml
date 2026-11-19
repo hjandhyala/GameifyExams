@@ -22,7 +22,12 @@ jobs:
       - run: npm run pipeline -- plan --weeks 6
       - name: Draft (Message Batches API, 50% cost)
         id: gen
-        run: npm run pipeline -- generate --track ${{ inputs.track || 'boards' }} --game ${{ inputs.game || 'gauntlet' }} --n ${{ inputs.n || '20' }} --batch | tee gen.log
+        env:
+          TRACK: ${{ inputs.track || 'boards' }}
+          GAME: ${{ inputs.game || 'gauntlet' }}
+          N: ${{ inputs.n || '20' }}
+        run: |
+          npm run pipeline -- generate --track "$TRACK" --game "$GAME" --n "$N" --batch | tee gen.log
       - name: Collect + validate
         run: |
           RUN=$(grep -o 'as run [^ .]*' gen.log | awk '{print $3}')

@@ -21,10 +21,13 @@ export interface DbHandle {
  */
 export async function createDb(opts: { url?: string; pgliteDir?: string } = {}): Promise<DbHandle> {
   const url = opts.url ?? process.env.DATABASE_URL;
+  if (!url && (process.env.VERCEL_ENV === 'production' || process.env.PREPDLE_PRODUCTION === '1'))
+    throw new Error('DATABASE_URL is required in production (embedded PGlite is for development only)');
   if (url) {
     const { default: postgres } = await import('postgres');
     const { drizzle } = await import('drizzle-orm/postgres-js');
-    const client = postgres(url, { prepare: false, max: Number(process.env.DB_POOL_MAX ?? 5), onnotice: () => {} });
+    // Serverless-friendly: few connections per instance, short idle timeout; use Neon's pooled (-pooler) URL.
+    const client = postgres(url, { prepare: false, max: Number(process.env.DB_POOL_MAX ?? 3), idle_timeout: 20, connect_timeout: 10, onnotice: () => {} });
     const db = drizzle(client, { schema }) as unknown as Db;
     return {
       db,

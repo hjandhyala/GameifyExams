@@ -29,12 +29,16 @@ function csp(nonce: string): string {
   ].join('; ');
 }
 
+/** Public, CDN-cacheable GET endpoints: never attach Set-Cookie (it disables edge caching). */
+const CACHEABLE_GET = /^\/api\/(v1\/(catalog|days\/|puzzles\/[^/]+\/[^/]+\/[^/]+$|stats\/)|health)/;
+
 /**
  * - Issues the anonymous HttpOnly device cookie (§9.1, D4) and refreshes it at most once a day.
  * - Adds a per-request CSP nonce for pages (§14.2).
  */
 export function proxy(request: NextRequest) {
   const isApi = request.nextUrl.pathname.startsWith('/api/');
+  if (isApi && request.method === 'GET' && CACHEABLE_GET.test(request.nextUrl.pathname)) return NextResponse.next();
   const headers = new Headers(request.headers);
   let did = request.cookies.get(DEVICE_COOKIE)?.value;
   const needsCookie = !did || !DID_RE.test(did);
