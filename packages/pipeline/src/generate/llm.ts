@@ -46,7 +46,7 @@ export interface CallSpec<S extends z.ZodType> {
 }
 
 export type CallResult<T> =
-  | { kind: 'ok'; data: T; usage: Usage; model: string }
+  | { kind: 'ok'; data: T; usage: Usage; model: string; costUsd: number }
   | { kind: 'refused'; details: unknown; usage?: Usage }
   | { kind: 'unparseable'; error: string; usage?: Usage };
 
@@ -82,7 +82,8 @@ export async function callStructured<S extends z.ZodType>(spec: CallSpec<S>, opt
     };
     if (r.stop_reason === 'refusal') return { kind: 'refused', details: r.stop_details, usage: r.usage };
     if (!r.parsed_output) return { kind: 'unparseable', error: 'empty parsed_output', usage: r.usage };
-    return { kind: 'ok', data: r.parsed_output, usage: r.usage, model: r.model ?? params.model };
+    const model = r.model ?? params.model;
+    return { kind: 'ok', data: r.parsed_output, usage: r.usage, model, costUsd: costUsd(model, r.usage) };
   } catch (e) {
     if (e instanceof Anthropic.APIError) throw e;
     return { kind: 'unparseable', error: (e as Error).message };
@@ -127,4 +128,53 @@ export async function* batchResults(id: string): AsyncGenerator<{ customId: stri
       yield { customId: r.custom_id, result: { kind: res.type, detail: res.type === 'errored' ? res.error : undefined } };
     }
   }
+}
+
+/** A structured-call function: real-time (callStructured) or replayed from a Message Batch. */
+export type Caller = <S extends z.ZodType>(spec: CallSpec<S>) => Promise<CallResult<z.infer<S>>>;
+
+const specKey = (spec: CallSpec<z.ZodType>) => JSON.stringify([spec.model ?? MODEL, spec.effort ?? 'high', spec.system, spec.user]);
+
+/**
+ * Two-pass batching for independent calls: pass 1 records every spec (results come back empty),
+ * then `run()` submits one Message Batch (50% cost) and pass 2 replays results by spec.
+ */
+export function batchRecorder(log: (m: string) => void = console.log) {
+  const specs = new Map<string, CallSpec<z.ZodType>>();
+  const results = new Map<string, CallResult<unknown>>();
+  const record: Caller = async (spec) => {
+    specs.set(specKey(spec), spec);
+    return { kind: 'unparseable', error: 'recording' };
+  };
+  const replay: Caller = async (spec) =>
+    (results.get(specKey(spec)) as CallResult<never> | undefined) ?? { kind: 'unparseable', error: 'missing batch result' };
+  async function run(): Promise<number> {
+    if (!specs.size) return 0;
+    const entries = [...specs.entries()];
+    const batchId = await submitBatch(entries.map(([, spec], i) => ({ customId: `v${i}`, spec })));
+    log(`validation batch ${batchId}: ${entries.length} requests`);
+    await waitForBatch(batchId, log, 30_000);
+    let cost = 0;
+    for await (const r of batchResults(batchId)) {
+      const entry = entries[Number(r.customId.slice(1))];
+      if (!entry) continue;
+      const [key, spec] = entry;
+      if (r.result.kind !== 'ok') {
+        results.set(key, r.result.kind === 'refused' ? { kind: 'refused', details: r.result.detail } : { kind: 'unparseable', error: r.result.kind });
+        continue;
+      }
+      const c = costUsd(r.result.model, r.result.usage, true);
+      cost += c;
+      let parsed: unknown;
+      try {
+        parsed = spec.schema.parse(JSON.parse(r.result.text));
+      } catch (e) {
+        results.set(key, { kind: 'unparseable', error: (e as Error).message.slice(0, 200), usage: r.result.usage });
+        continue;
+      }
+      results.set(key, { kind: 'ok', data: parsed, usage: r.result.usage, model: r.result.model, costUsd: c });
+    }
+    return cost;
+  }
+  return { record, replay, run, size: () => specs.size };
 }

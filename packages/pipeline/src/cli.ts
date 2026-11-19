@@ -142,7 +142,7 @@ async function main() {
         await repo.startRun(runId, 'validate', { run: flags.run });
         const autoApprove = resolveAutoApprove(flags['auto-approve']);
         log(`auto-approve mode: ${autoApprove}`);
-        const r = await validateDrafts(repo, { runId: flags.run as string | undefined, llm: !flags['no-llm'], log, limit: flags.limit ? Number(flags.limit) : undefined, autoApprove });
+        const r = await validateDrafts(repo, { runId: flags.run as string | undefined, llm: !flags['no-llm'], log, limit: flags.limit ? Number(flags.limit) : undefined, autoApprove, batch: !flags.sync });
         await repo.finishRun(runId, 'done', r, r.cost);
         log(`validated ${r.total}: ${r.passed} passed, ${r.approved} auto-approved (provisional) · $${r.cost.toFixed(2)}`);
         break;
@@ -211,7 +211,7 @@ function require_help() {
   plan [--weeks 6]                bank inventory vs. demand per (track, game)
   generate --track --game --n     draft items with Claude (add --batch for the Message Batches API)
   collect --run <id>              collect a batch run into draft items
-  validate [--run id] [--no-llm] [--auto-approve[=launch]]  run validators V1–V8; drafts → in_review / auto_rejected (or approved+provisional)
+  validate [--run id] [--no-llm] [--auto-approve[=launch]] [--sync]  run validators (Message Batch by default, 50% cost) V1–V8; drafts → in_review / auto_rejected (or approved+provisional)
   eval-golden [--track --game]    run validators on the reviewed golden set (CI gate for prompt/model changes)
   schedule [--from --days]        fill empty slots from approved items and compile puzzles
   lock [--days 7] · buffer · psychometrics · cost [--since 30] · catalog`;
