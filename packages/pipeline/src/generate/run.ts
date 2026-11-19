@@ -271,7 +271,8 @@ export async function generateSync(repo: Repo, slots: Slot[], runId: string, log
 
 /** generate --batch: submits a Message Batch; `collect` turns results into draft items. */
 export async function generateBatch(repo: Repo, slots: Slot[], runId: string): Promise<string> {
-  const batchId = await submitBatch(slots.map((s) => ({ customId: `${runId}__${s.id.replace(/[^A-Za-z0-9_-]/g, '_')}`, spec: specFor(s) })));
+  // custom_id must be ≤ 64 chars: use the slot index; the run record maps index → slot.
+  const batchId = await submitBatch(slots.map((s, i) => ({ customId: `s${i}`, spec: specFor(s) })));
   await repo.finishRun(runId, 'submitted', { batchId, slots });
   return batchId;
 }
@@ -281,7 +282,7 @@ export async function collectBatch(repo: Repo, runId: string, log: Log): Promise
   if (!run) throw new Error(`run ${runId} not found`);
   const stats = run.stats as { batchId: string; slots: Slot[] };
   await waitForBatch(stats.batchId, log);
-  const bySlot = new Map(stats.slots.map((s) => [`${runId}__${s.id.replace(/[^A-Za-z0-9_-]/g, '_')}`, s]));
+  const bySlot = new Map(stats.slots.map((s, i) => [`s${i}`, s]));
   let inserted = 0;
   let failed = 0;
   let cost = 0;
